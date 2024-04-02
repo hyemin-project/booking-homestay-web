@@ -1,0 +1,183 @@
+[
+    {
+      "id": "p001",
+      "title": "Central City Cozy Retreat",
+      "location": "Central",
+      "rating": "4",
+      "price_per_month": "1450",
+      "amenities": ["WiFi", "Air Conditioning", "Pet-friendly"],
+      "vegetarian_friendly": true,
+      "image_path": "../bookmyhomestay/public/img/Central_City_Cozy_Retreat.png"
+    },
+    {
+      "id": "p002",
+      "title": "West Side Modern Loft",
+      "location": "West_Side",
+      "rating": "4",
+      "price_per_month": "1350",
+      "amenities": ["WiFi", "Gym", "Pool"],
+      "vegetarian_friendly": true
+    },
+    {
+      "id": "p003",
+      "title": "East Side Heritage Home",
+      "location": "East_Side",
+      "rating": "4",
+      "price_per_month": "1200",
+      "amenities": ["WiFi", "Air Conditioning", "Cook"],
+      "vegetarian_friendly": true
+    },
+    {
+      "id": "p004",
+      "title": "South Vancouver Studio",
+      "location": "South_Side",
+      "rating": "4",
+      "price_per_month": "1100",
+      "amenities": ["WiFi", "Pet-friendly", "Gym"],
+      "vegetarian_friendly": false
+    },
+    {
+      "id": "p005",
+      "title": "Central Artistic Loft",
+      "location": "Central",
+      "rating": "3",
+      "price_per_month": "1000",
+      "amenities": ["WiFi", "Air Conditioning", "Cook"],
+      "vegetarian_friendly": true
+    },
+    {
+      "id": "p006",
+      "title": "West Side Green Retreat",
+      "location": "West_Side",
+      "rating": "4",
+      "price_per_month": "950",
+      "amenities": ["WiFi", "Pool", "Pet-friendly"],
+      "vegetarian_friendly": true
+    },
+    {
+      "id": "p007",
+      "title": "East Side Cozy Cottage",
+      "location": "East_Side",
+      "rating": "5",
+      "price_per_month": "800",
+      "amenities": ["WiFi", "Air Conditioning", "Gym"],
+      "vegetarian_friendly": false
+    },
+    {
+      "id": "p008",
+      "title": "South Vancouver Historic Mansion",
+      "location": "South_Side",
+      "rating": "5",
+      "price_per_month": "1200",
+      "amenities": ["WiFi", "Cook", "Pool"],
+      "vegetarian_friendly": false
+    },
+    {
+      "id": "p009",
+      "title": "Central Luxury Penthouse",
+      "location": "Central",
+      "rating": "5",
+      "price_per_month": "1800",
+      "amenities": ["WiFi", "Air Conditioning", "Pet-friendly","Cook", "Pool"],
+      "vegetarian_friendly": true
+    },
+    {
+      "id": "p010",
+      "title": "West Side Family Home",
+      "location": "West_Side",
+      "rating": "4",
+      "price_per_month": "850",
+      "amenities": ["WiFi", "Cook"],
+      "vegetarian_friendly": true
+    },
+    {
+      "id": "p011",
+      "title": "East Side Urban Treehouse",
+      "location": "East_Side",
+      "rating": "2",
+      "price_per_month": "400",
+      "amenities": ["WiFi"],
+      "vegetarian_friendly": true
+    },
+    {
+      "id": "p012",
+      "title": "South Vancouver Garden Loft",
+      "location": "South_Side",
+      "rating": "3",
+      "price_per_month": "1200",
+      "amenities": ["WiFi", "Gym", "Pet-friendly"],
+      "vegetarian_friendly": true
+    },
+    {
+      "id": "p013",
+      "title": "Central Chic Apartment",
+      "location": "Central",
+      "rating": "4",
+      "price_per_month": "1200",
+      "amenities": ["WiFi", "Air Conditioning", "Pool","cook"],
+      "vegetarian_friendly": false
+    },
+    {
+      "id": "p014",
+      "title": "West Side Boutique Room",
+      "location": "West_Side",
+      "rating": "3",
+      "price_per_month": "700",
+      "amenities": ["WiFi", "Air Conditioning"],
+      "vegetarian_friendly": true
+    },
+    {
+      "id": "p015",
+      "title": "East Side Studio Plus",
+      "location": "East_Side",
+      "rating": "4",
+      "price_per_month": "1200",
+      "amenities": ["WiFi", "Gym", "Air Conditioning"],
+      "vegetarian_friendly": true
+    },
+    {
+      "id": "p016",
+      "title": "South Vancouver Hidden Gem",
+      "location": "South_Side",
+      "rating": "5",
+      "price_per_month": "1250",
+      "amenities": ["WiFi", "Air Conditioning", "Pet-friendly"],
+      "vegetarian_friendly": true
+    },
+    {
+      "id": "p017",
+      "title": "Central Industrial Loft",
+      "location": "Central",
+      "rating": "3",
+      "price_per_month": "900",
+      "amenities": ["WiFi", "Air Conditioning"],
+      "vegetarian_friendly": false
+    },
+    {
+      "id": "p018",
+      "title": "West Side Mini Mansion",
+      "location": "West_Side",
+      "rating": "4",
+      "price_per_month": "1300",
+      "amenities": ["WiFi", "Pet-friendly", "Air Conditioning","Gym"],
+      "vegetarian_friendly": false
+    },
+    {
+      "id": "p019",
+      "title": "East Side Eco Studio",
+      "location": "East_Side",
+      "rating": "4",
+      "price_per_month": "800",
+      "amenities": ["WiFi", "Cook", "Gym"],
+      "vegetarian_friendly": true
+    },
+    {
+      "id": "p020",
+      "title": "South Vancouver Sky High Condo",
+      "rating": "1",
+      "location": "South_Side",
+      "price_per_month": "400",
+      "amenities": [],
+      "vegetarian_friendly": true
+    }
+  ]
