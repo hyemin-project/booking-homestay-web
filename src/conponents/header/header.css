@@ -3,8 +3,9 @@
     color:white;
     display:flex;
     justify-content: center;
+    /* related to search bar absolute */
+    position: relative; 
 }
-
 .headerList{
     display:flex;
     justify-content: center;
@@ -35,6 +36,55 @@ header description */
     cursor: pointer;
     color:#093878;
     font-weight: 500;
-    border-radius: 20px;
+    border-radius: 10px;
  
+}
+
+
+/*header search bar*/ 
+
+.headerSearch {
+    height:50px;
+    background-color: white;
+    border: 3px solid SkyBlue;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px 0px;
+    border-radius: 5px;
+    position: absolute;
+    bottom:-25px;
+    width: 100%;
+    max-width: 1024px;
+  }
+
+    .headerIcon {
+    color: #A9A9A9;
+    font-size:1.5rem;
+  }
+
+.headerSearchItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .headerSearchInput {
+    border: none;
+    outline: none;
+  }
+
+  .headerSearchText {
+    color: lightgray;
+    cursor: pointer;
+  }
+
+  .headerButton-1{
+    border: none;
+    padding:5px 10px;
+    cursor: pointer;
+    background-color:#254242;
+    font-weight: 500;
+    border-radius: 10px;
+    color:white;
 }

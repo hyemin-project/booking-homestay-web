@@ -1,6 +1,6 @@
 import "./navbar.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faGlobe } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faGlobe,faUser } from '@fortawesome/free-solid-svg-icons';
 import React, { useState } from 'react';
 
 const Navbar = () => {
@@ -34,8 +34,10 @@ const Navbar = () => {
                         )}
                     </div>
                     {/*Welcome message*/}
-                    <div className="welcomeMessage">Welcome, Guest</div>
-
+                    <div className="welcomeMessage">   
+                        Welcome, Guest 
+                        <FontAwesomeIcon icon={faUser} style={{ marginLeft: '20px', fontSize: '1.5rem' }}/>
+                    </div>
                 </div>
 
             </div>

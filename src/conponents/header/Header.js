@@ -1,5 +1,8 @@
 import "./header.css";
 import { LoremIpsum } from 'lorem-ipsum';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faHouse,faCalendarDays,faPerson} from '@fortawesome/free-solid-svg-icons';
+
 
 const Header = () => {
 
@@ -14,11 +17,7 @@ const Header = () => {
                 <div className="headerList">
                     <div className="headerListItem">
                         {/* <div className ="headerListItem">
-
                         </div> */}
-
-
-
                     </div>
                 </div>
 
@@ -29,6 +28,28 @@ const Header = () => {
                         {loremText}
                 </p>
                 <button className="headerButton">Sign in / Register</button>
+
+                <div className="headerSearch">
+                    <div className ="headerSearchItem">
+                        <FontAwesomeIcon icon={faHouse} className="headerIcon" />
+                        <input type="text" placeholder="Search for your homestay" className="headerSearchInput" />
+                    </div>
+
+                    <div className ="headerSearchItem">
+                        <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />
+                        <span className="headerSearchText">date to date</span>
+                    </div>
+
+                    <div className ="headerSearchItem">
+                        <FontAwesomeIcon icon={faPerson} className="headerIcon" />
+                        <span className="headerSearchText">1 people</span>
+                    </div>
+
+                    <div className ="headerSearchItem">
+                        <button className="headerButton-1">Search</button>
+                    </div>
+                </div>
+            
             </div>
         </div>
    
