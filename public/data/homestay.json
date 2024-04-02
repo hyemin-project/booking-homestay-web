@@ -1,6 +1,6 @@
 [
     {
-      "id": "p001",
+      "id": "001",
       "title": "Central City Cozy Retreat",
       "location": "Central",
       "rating": "4",
@@ -10,7 +10,7 @@
       "image_path": "../bookmyhomestay/public/img/Central_City_Cozy_Retreat.png"
     },
     {
-      "id": "p002",
+      "id": "002",
       "title": "West Side Modern Loft",
       "location": "West_Side",
       "rating": "4",
@@ -19,7 +19,7 @@
       "vegetarian_friendly": true
     },
     {
-      "id": "p003",
+      "id": "003",
       "title": "East Side Heritage Home",
       "location": "East_Side",
       "rating": "4",
@@ -28,7 +28,7 @@
       "vegetarian_friendly": true
     },
     {
-      "id": "p004",
+      "id": "004",
       "title": "South Vancouver Studio",
       "location": "South_Side",
       "rating": "4",
@@ -37,7 +37,7 @@
       "vegetarian_friendly": false
     },
     {
-      "id": "p005",
+      "id": "005",
       "title": "Central Artistic Loft",
       "location": "Central",
       "rating": "3",
@@ -46,7 +46,7 @@
       "vegetarian_friendly": true
     },
     {
-      "id": "p006",
+      "id": "006",
       "title": "West Side Green Retreat",
       "location": "West_Side",
       "rating": "4",
@@ -55,7 +55,7 @@
       "vegetarian_friendly": true
     },
     {
-      "id": "p007",
+      "id": "007",
       "title": "East Side Cozy Cottage",
       "location": "East_Side",
       "rating": "5",
@@ -64,7 +64,7 @@
       "vegetarian_friendly": false
     },
     {
-      "id": "p008",
+      "id": "008",
       "title": "South Vancouver Historic Mansion",
       "location": "South_Side",
       "rating": "5",
@@ -73,7 +73,7 @@
       "vegetarian_friendly": false
     },
     {
-      "id": "p009",
+      "id": "009",
       "title": "Central Luxury Penthouse",
       "location": "Central",
       "rating": "5",
@@ -82,7 +82,7 @@
       "vegetarian_friendly": true
     },
     {
-      "id": "p010",
+      "id": "010",
       "title": "West Side Family Home",
       "location": "West_Side",
       "rating": "4",
@@ -91,7 +91,7 @@
       "vegetarian_friendly": true
     },
     {
-      "id": "p011",
+      "id": "011",
       "title": "East Side Urban Treehouse",
       "location": "East_Side",
       "rating": "2",
@@ -100,7 +100,7 @@
       "vegetarian_friendly": true
     },
     {
-      "id": "p012",
+      "id": "012",
       "title": "South Vancouver Garden Loft",
       "location": "South_Side",
       "rating": "3",
@@ -109,7 +109,7 @@
       "vegetarian_friendly": true
     },
     {
-      "id": "p013",
+      "id": "013",
       "title": "Central Chic Apartment",
       "location": "Central",
       "rating": "4",
@@ -118,7 +118,7 @@
       "vegetarian_friendly": false
     },
     {
-      "id": "p014",
+      "id": "014",
       "title": "West Side Boutique Room",
       "location": "West_Side",
       "rating": "3",
@@ -127,7 +127,7 @@
       "vegetarian_friendly": true
     },
     {
-      "id": "p015",
+      "id": "015",
       "title": "East Side Studio Plus",
       "location": "East_Side",
       "rating": "4",
@@ -136,7 +136,7 @@
       "vegetarian_friendly": true
     },
     {
-      "id": "p016",
+      "id": "016",
       "title": "South Vancouver Hidden Gem",
       "location": "South_Side",
       "rating": "5",
@@ -145,7 +145,7 @@
       "vegetarian_friendly": true
     },
     {
-      "id": "p017",
+      "id": "017",
       "title": "Central Industrial Loft",
       "location": "Central",
       "rating": "3",
@@ -154,7 +154,7 @@
       "vegetarian_friendly": false
     },
     {
-      "id": "p018",
+      "id": "018",
       "title": "West Side Mini Mansion",
       "location": "West_Side",
       "rating": "4",
@@ -163,7 +163,7 @@
       "vegetarian_friendly": false
     },
     {
-      "id": "p019",
+      "id": "019",
       "title": "East Side Eco Studio",
       "location": "East_Side",
       "rating": "4",
@@ -172,7 +172,7 @@
       "vegetarian_friendly": true
     },
     {
-      "id": "p020",
+      "id": "020",
       "title": "South Vancouver Sky High Condo",
       "rating": "1",
       "location": "South_Side",
