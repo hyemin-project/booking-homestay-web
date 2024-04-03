@@ -59,13 +59,14 @@ const Navbar = (props) => {
                     </div>
                     {/*Welcome message*/}
                     <div className="welcomeMessage">
+                        {/* if login user is null then show welcome guest else show welcome user */}
                         {props.loginUser? (
                             <span>Welcome {props.loginUser && props.loginUser.fname} {props.loginUser && props.loginUser.lname}</span>
                         ) : (
                             <span>Welcome Guest</span>
                         
                         )}
-        
+                        
                         <FontAwesomeIcon icon={faUser} style={{ marginLeft: '20px', fontSize: '1.5rem' }}/>
                     </div>
                 </div>

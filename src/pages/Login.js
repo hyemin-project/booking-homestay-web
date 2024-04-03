@@ -2,6 +2,7 @@ import {useState} from 'react';
 import Navbar from '../conponents/navbar/Navbar';
 import { useNavigate } from "react-router-dom"; 
 
+
 const Login = (props) => {
 
     const [user,setUser] = useState({email:"",pass:""});
@@ -24,7 +25,7 @@ const Login = (props) => {
         console.log("this is user email"+user.email,"this is user password"+user.pass);
     }
 
-    console.log("here is loging page");
+    // console.log("here is loging page");
 
     return (
 
@@ -103,6 +104,7 @@ const Login = (props) => {
           </div>
         </div>
       </section>
+    
       </>
       );
 }

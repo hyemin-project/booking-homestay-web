@@ -6,6 +6,7 @@
     /* related to search bar absolute */
     position: relative; 
 }
+
 .headerList{
     display:flex;
     justify-content: center;

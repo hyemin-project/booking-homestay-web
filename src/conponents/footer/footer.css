@@ -1,0 +1,49 @@
+.footer {
+
+    color: #162c2c;
+    display: flex;
+    justify-content: center;
+
+}
+
+.fLists {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 50px;
+
+}
+
+.footerContainer {
+    width: 100%;
+    max-width: 1024px;
+    margin: 40px 0px 100px 0px;
+}
+
+.coloumn {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    align-items: center;
+}
+
+.colomn>h5 {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+
+
+.fListItem {
+    margin-bottom: 10px;
+    color: #162c2c;
+    cursor: pointer;
+    font-size: 14px;
+    list-style: none;
+}
+
+.fBottom {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
