@@ -2,19 +2,30 @@ import "./navbar.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faGlobe,faUser } from '@fortawesome/free-solid-svg-icons';
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
+
 
 const Navbar = () => {
 
     const [showDropdown, setShowDropdown] = useState(false);
 
+    const navigate = useNavigate();
+
+    const handleLogin = () => {
+        navigate('/login')
+    }
+
+    const backHome = () => {
+        navigate('/')
+    }
 
     return (
         <div className="navbar">
             <div className="navContainer">
-                <span className="navLogo">BookMyHomestay</span>
+                <span className="navLogo" onClick={backHome}> BookMyHomestay</span>
                 <div className="navMenu">
                     {/* <button className="navButton">Register</button> */}
-                    <button className="navButton">Login</button>
+                    <button className="navButton" onClick={handleLogin}>Login</button>
 
 
                     {/* implement favorite list logic here */}
