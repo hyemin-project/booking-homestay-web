@@ -32,7 +32,7 @@ const Header = () => {
                 <div className="headerSearch">
                     <div className ="headerSearchItem">
                         <FontAwesomeIcon icon={faHouse} className="headerIcon" />
-                        <input type="text" placeholder="Search for your homestay" className="headerSearchInput" />
+                        <input type="text" placeholder="Vancouver" className="headerSearchInput" />
                     </div>
 
                     <div className ="headerSearchItem">

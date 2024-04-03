@@ -1,0 +1,69 @@
+.listContainer{
+    display:flex;
+    justify-content: center;
+    margin-top:100px;
+}
+
+.listWrapper{
+    width:100%;
+    max-width: 1200px;
+    display:flex;
+    gap:20px;
+
+}
+
+/* search bar */
+.listSearch{
+    display: flex;
+    flex-direction: column;
+    background-color: #F2F2F2;
+    padding:20px;
+    border-radius: 10px;
+    /* when the screen scroll down the search bar will stick to the top of the screen */
+    position:sticky;
+    top:10px;
+    width:300px;
+    height:119px;
+    align-items: center;
+}
+
+
+.searchBar>h5{
+    font-size:18px;
+    color:#181818;
+    margin-bottom:1rem;
+}
+
+.searchBar input[type="text"] {
+    width: 259px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.searchInput {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.searchInput input {
+    width: 100%;
+    padding-right: 40px; /* Make room for the icon */
+}
+
+.searchButton {
+    position: absolute;
+    right: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 0 10px;
+    color: inherit; /* Inherits the font color from the parent */
+    font-size: inherit; /* Optionally ensures the icon size matches your design */
+}
+
+.listResult{
+    display:flex;
+    width:900px;
+}
