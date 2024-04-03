@@ -5,7 +5,9 @@ import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
 
-const Navbar = () => {
+const Navbar = (props) => {
+
+    console.log("here is navbar "+ props.loginUser)
 
     const [showDropdown, setShowDropdown] = useState(false);
 
@@ -13,6 +15,13 @@ const Navbar = () => {
 
     const handleLogin = () => {
         navigate('/login')
+    }
+
+    // logout user the logout function is coming from App.js and it is passed as props to Homestay.js and then to Navbar.js
+
+    const handleLogout = () => {
+        props.logoutUser();
+        navigate('/')
     }
 
     const backHome = () => {
@@ -25,7 +34,11 @@ const Navbar = () => {
                 <span className="navLogo" onClick={backHome}> BookMyHomestay</span>
                 <div className="navMenu">
                     {/* <button className="navButton">Register</button> */}
-                    <button className="navButton" onClick={handleLogin}>Login</button>
+                    {props.loginUser ? (
+                        <button className="navButton" onClick={handleLogout}>Logout</button>
+                    ) : (
+                        <button className="navButton" onClick={handleLogin}>Login</button>
+                    )}
 
 
                     {/* implement favorite list logic here */}
@@ -45,8 +58,14 @@ const Navbar = () => {
                         )}
                     </div>
                     {/*Welcome message*/}
-                    <div className="welcomeMessage">   
-                        Welcome, Guest 
+                    <div className="welcomeMessage">
+                        {props.loginUser? (
+                            <span>Welcome {props.loginUser && props.loginUser.fname} {props.loginUser && props.loginUser.lname}</span>
+                        ) : (
+                            <span>Welcome Guest</span>
+                        
+                        )}
+        
                         <FontAwesomeIcon icon={faUser} style={{ marginLeft: '20px', fontSize: '1.5rem' }}/>
                     </div>
                 </div>

@@ -1,10 +1,11 @@
 import {useState} from 'react';
 import Navbar from '../conponents/navbar/Navbar';
+import { useNavigate } from "react-router-dom"; 
 
 const Login = (props) => {
 
     const [user,setUser] = useState({email:"",pass:""});
-
+    const navigate = useNavigate(); // use navigate hook
     // const handleLogin = (e) => {
     //     e.preventDefault();
     //     console.log("this is user email"+email,"this is user password"+password);
@@ -18,6 +19,8 @@ const Login = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        props.auth(user);
+        navigate('/');
         console.log("this is user email"+user.email,"this is user password"+user.pass);
     }
 
@@ -26,13 +29,13 @@ const Login = (props) => {
     return (
 
         <>
-        <Navbar/>
+        <Navbar loginUser={props.loginUser}/>
         <section style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
         <div className="container" >
         <div className="card border-light-subtle shadow-sm" >
             <div className="row g-0">
               <div className="col-12 col-md-6">
-                <img className="img-fluid rounded-start w-100 h-100 object-fit-cover" loading="lazy" src="/img/homestays-login.png" alt="BootstrapBrain Logo" />
+                <img className="img-fluid rounded-start w-100 h-100 object-fit-cover" loading="lazy" src="/img/bookmyhomestay-blue.png" alt="BootstrapBrain Logo" />
               </div>
               <div className="col-12 col-md-6">
                 <div className="card-body p-3 p-md-4 p-xl-5">

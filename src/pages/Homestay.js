@@ -3,13 +3,19 @@ import Navbar from '../conponents/navbar/Navbar';
 
 
 
-const Homestay = () => {
+const Homestay = (props) => {
+    // console.log("here is homestay"+ props.loginUser.fname);
+
+
     return (
-   
+      
         <div>
-            <Navbar/>
+            {/* pass login user to navbar */}
+            <Navbar loginUser={props.loginUser} logoutUser={props.logout}/>
             <Header/>
+
             <h1>Homestay</h1>   
+           
         </div>
            
     )

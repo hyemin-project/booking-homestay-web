@@ -1,4 +1,4 @@
-[{"id":1,"fname":"Rosa","lname":"Bending","email":"rbending0@php.net","pass":"rE8,>/BNj_M$iB3H","gender":"Female","vegetarian ":true,"budget":"1000","location": "East_Side","type":"client"},
+[{"id":1,"fname":"Rosa","lname":"Bending","email":"rbending0@php.net","pass":"test12","gender":"Female","vegetarian ":true,"budget":"1000","location": "East_Side","type":"client"},
 {"id":2,"fname":"Saraann","lname":"Plumley","email":"splumley1@ocn.ne.jp","pass":"hW1}g5I'==>f<GT","gender":"Female","vegetarian ":true,"budget":"500","location": "West_Side","type":"client"},
 {"id":3,"fname":"Sutton","lname":"Dean","email":"sdean2@cnbc.com","pass":"iZ4,S_yIj.Or|Z","gender":"Male","vegetarian ":false,"budget":"1500","location": "South_Side","type":"client"},
 {"id":4,"fname":"Noah","lname":"Jozefczak","email":"njozefczak3@businessinsider.com","pass":"aZ4*4sN&CK","gender":"Male","vegetarian ":false,"budget":"1000","location": "North_Side","type":"client"},
