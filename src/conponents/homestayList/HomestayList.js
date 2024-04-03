@@ -1,4 +1,5 @@
 import "./homestayList.css";
+import Dropdown from 'react-bootstrap/Dropdown';
 
 const HomestayList = () => {
     return (
@@ -10,9 +11,18 @@ const HomestayList = () => {
          
 
                  {/* sorted button here */}
-                <div className="sortButton">
-                    <button className="sortButton-1">tempory sorted button</button>
-                </div>
+                 <Dropdown>
+                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                        Sorted by recommended
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                        <Dropdown.Item href="#/action-1">Sorted by price (high to low)</Dropdown.Item>
+                        <Dropdown.Item href="#/action-2">Sorted by price (low to high)</Dropdown.Item>
+                        <Dropdown.Item href="#/action-3">Sorted by rate&nbsp;  (high to low)</Dropdown.Item>
+                        <Dropdown.Item href="#/action-3">Sorted by rate&nbsp; (low to high)</Dropdown.Item>
+                    </Dropdown.Menu>
+                    </Dropdown>
             </div>
 
         </>
