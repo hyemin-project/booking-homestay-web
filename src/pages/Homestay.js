@@ -5,11 +5,27 @@ import HomestayList from '../conponents/homestayList/HomestayList';
 import "./css/homestay.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-
-
+import { useEffect, useState } from "react";
+import FileService from "../services/FileService"
 
 const Homestay = (props) => {
-    // console.log("here is homestay"+ props.loginUser.fname);
+
+    const [homestays,setHomestay] = useState(null);
+
+    // read user data from json file
+    useEffect(() => {
+        FileService.read("homestay").then(
+            (response) => {
+                setHomestay(response.data);
+                console.log(response.data);
+            },
+
+            (rej) => {
+                console.log(rej);
+            }
+        )
+
+    }, [])
 
     return (
       
@@ -35,8 +51,9 @@ const Homestay = (props) => {
 
                     {/* display homestay list */}
                     <div className="listResult">
-                       
-                        <HomestayList />
+
+                        <HomestayList homestays={homestays} />
+
                     </div>
                 </div>
             </div>

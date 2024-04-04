@@ -13,6 +13,7 @@ function App() {
 
   const [users,setUsers] = useState(null);
   const [loginUser, setLoginUser] = useState(null);
+  // const [homestays, setHomestay] = useState(null);
 
   // read user data from json file
   useEffect(() => {
@@ -25,8 +26,9 @@ function App() {
               console.log(rej);
           }
       )
-      
+
   }, [])
+
 
   // login 
   const Auth = (userObj) => {
@@ -54,12 +56,12 @@ function App() {
         <Route path="/" element={<Link loginUser={loginUser} />}>
               <Route index element={<Homestay loginUser={loginUser} logout={logoutUser} />}/>  
               <Route path="login" element={<Login auth={Auth} loginUser={loginUser} />} />
-             
+
               {/* <Route path="logout" element={<Logout  />} />
               <Route path="*" element={<NoPage />} /> */} 
         </Route>
       </Routes>
-  </BrowserRouter>
+   </BrowserRouter>
   );
 }
 
