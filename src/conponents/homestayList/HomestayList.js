@@ -59,7 +59,7 @@ const HomestayList = (props) => {
                                 <div className="homestayInfo-wrapper">
                                     <div className="homestayInfo">
                                         <h5 className="homestayTitle">{homestay.title}</h5>
-                                        <h5 className="homestayRate"> {convertRatingToStar(homestay.rating)}</h5>
+                                        <h5 className="homestayRate"> {convertRatingToStar(homestay.rating)}<span className="homestayRatetext">&nbsp;{homestay.rating}</span></h5>
                                         <p className="homestayDescription">{homestay.desc}</p>
                                         <button className="seeAvailability">See Availability</button>
                                     </div>

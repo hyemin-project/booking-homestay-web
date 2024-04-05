@@ -44,8 +44,13 @@
 
 .homestayRate{
     color:#ffb700;
+    align-items: center;
 }
-
+.homestayRatetext{
+    color:black;
+    font-size: 14px;
+    align-items: center;
+}
 .homestayDescription{
     width:380px;
 }
