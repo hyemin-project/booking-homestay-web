@@ -64,7 +64,6 @@ const Navbar = (props) => {
                             <span>Welcome {props.loginUser && props.loginUser.fname} {props.loginUser && props.loginUser.lname}</span>
                         ) : (
                             <span>Welcome Guest</span>
-                        
                         )}
                         
                         <FontAwesomeIcon icon={faUser} style={{ marginLeft: '20px', fontSize: '1.5rem' }}/>

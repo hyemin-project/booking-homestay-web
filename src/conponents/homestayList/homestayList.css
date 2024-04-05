@@ -42,7 +42,9 @@
     justify-content: space-between;
 }
 
-
+.homestayRate{
+    color:#ffb700;
+}
 
 .homestayDescription{
     width:380px;
