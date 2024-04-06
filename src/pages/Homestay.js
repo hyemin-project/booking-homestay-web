@@ -51,6 +51,8 @@ const Homestay = (props) => {
         // Initialize an empty array to store matching homestays
         let matchedHomestays = []; 
         for (let home of homestays) { 
+            // Check if the homestay matches the user's preferences
+            // the homestay must have one of the following conditions to be added to the array
             if (home.vegetarian_friendly === user.vegetarian || 
                 Number(home.price_per_month) <= Number(user.budget) || 
                 home.location === user.location) {
