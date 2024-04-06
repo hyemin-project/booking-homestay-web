@@ -63,7 +63,12 @@
     font-size: inherit; /* Optionally ensures the icon size matches your design */
 }
 
+
+
 .listResult{
     display:flex;
     width:900px;
 }
+
+
+

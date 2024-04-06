@@ -2,9 +2,20 @@ import "./homestayList.css";
 import Dropdown from 'react-bootstrap/Dropdown';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
-
+import {useState,useEffect} from 'react';
 const HomestayList = (props) => {
     
+    const [homestayCount, setHomestayCount] = useState(null);
+    
+
+    useEffect(() => {
+        if (props.matchingHomestays) {
+            setHomestayCount(props.matchingHomestays.length);
+        }
+    }, [props.matchingHomestays]);
+
+    
+
     function convertRatingToStar(rating) {
         rating = Number(rating)
         let star = '';
@@ -14,14 +25,26 @@ const HomestayList = (props) => {
         return star;
     }
 
-
+  
     return (
         <>
             <div className="homestayList">
                 <div className="listResultTitle">
                     {/* search bar */}
                     <div className="searchResult">
-                        <h4>Vancouver: 20 search results found</h4>
+                        {props.loginUser == null ? (
+                            <h3>We've found {homestayCount} results for you!</h3>
+                        ) : (
+                            <>
+                                <h4>Hi {props.loginUser.fname}, we've found {homestayCount} results based on your preferences.</h4>
+                                {props.matchingHomestays.length > 0 && (
+                                     <h4 className="mostValuableHomestay">
+                                     <span className="mostValuableHomestayTitle">{props.matchingHomestays[0].title}</span> stands out as the perfect homestay for you!
+                                 </h4>
+                                 
+                                )}
+                            </>
+                        )}
                     </div>
 
 
@@ -32,17 +55,23 @@ const HomestayList = (props) => {
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu>
-                            <Dropdown.Item >Sorted by price (high to low)</Dropdown.Item>
-                            <Dropdown.Item >Sorted by price (low to high)</Dropdown.Item>
-                            <Dropdown.Item >Sorted by rate&nbsp;  (high to low)</Dropdown.Item>
-                            <Dropdown.Item >Sorted by rate&nbsp; (low to high)</Dropdown.Item>
+                        {/* check if user is logged in, if yes, display recommended by score */}
+                        {props.loginUser && (
+                                <Dropdown.Item onClick={() => props.handleSort('recommended')}>
+                                    Recommended by Score
+                                </Dropdown.Item>
+                            )}
+                            <Dropdown.Item onClick={()=>props.handleSort('priceHigh')} >Sorted by price (high to low)</Dropdown.Item>
+                            <Dropdown.Item onClick={()=>props.handleSort('priceLow')}>Sorted by price (low to high)</Dropdown.Item>
+                            <Dropdown.Item onClick={()=>props.handleSort('rateHigh')}>Sorted by rate&nbsp;  (high to low)</Dropdown.Item>
+                            <Dropdown.Item onClick={()=>props.handleSort('rateLow')}>Sorted by rate&nbsp; (low to high)</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
                 </div>
 
                 <div className="homestayDisplay">
                     {/* check if props.homestays is not null, then map through the homestays array and display each homestay */}
-                    {props.homestays && props.homestays.map((homestay) => {
+                    {props.matchingHomestays && props.matchingHomestays.map((homestay) => {
                         return (
                             //searchItem
                             <div className="homestayCard" key={homestay.id}>
