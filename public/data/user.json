@@ -23,7 +23,7 @@
 {"id":23,"fname":"Vernon","lname":"Assinder","email":"vassinderm@cloudflare.com","pass":"bS3|Wjk?h6","gender":"Male","vegetarian":true,"budget":"1500","location": "Central","type":"client"},
 {"id":24,"fname":"Kaleena","lname":"Beams","email":"kbeamsn@prnewswire.com","pass":"gC8&H+22C}!RT%#","gender":"Female","vegetarian":false,"budget":"1500","location": "South_Side","type":"client"},
 {"id":25,"fname":"Stillman","lname":"Dovidaitis","email":"sdovidaitiso@nymag.com","pass":"jG7.>Qzq/Y/","gender":"Male","vegetarian":false,"budget":"1500","location": "West_Side","type":"client"},
-{"id":1001,"fname":"hyemin","lname":"Chung","email":"hyemin@gmail.com","pass":"88888888","gender":"Female","vegetarian":false,"budget":"","location": "","type":"admin"},
-{"id":1002,"fname":"George","lname":"Chao","email":"george@gmail.com","pass":"77777777","gender":"Male","vegetarian":false,"budget":"","location": "","type":"admin"},
+{"id":1001,"fname":"Hyemin","lname":"Chung","email":"hyemin@gmail.com","pass":"88888888","gender":"Female","vegetarian":false,"budget":"","location": "","type":"admin"},
+{"id":1002,"fname":"George","lname":"Chao","email":"george@gmail.com","pass":"7777","gender":"Male","vegetarian":false,"budget":"","location": "","type":"admin"},
 {"id":1003,"fname":"Matheus","lname":"Oliveira","email":"matheus@gmail.com","pass":"66666666","gender":"Male","vegetarian":false,"budget":"","location": "","type":"admin"}
 ]

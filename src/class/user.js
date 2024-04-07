@@ -1,19 +1,28 @@
 class User{
+    #email;
+    #pass;
     constructor(id,fname,lname,email,pass,gender){
+       
         this.id = id;
         this.fname = fname;
         this.lname = lname;
-        this.email = email;
-        this.pass = pass; 
+        this.#email = email;
+        this.#pass = pass; 
         this.gender = gender;
 
     }
     displayInfo(){
         return this;
     }
+
+    get userEmail(){
+        return this.#email;
+    
+    }
 }
 
-export class Customer extends User{
+export class client extends User{
+   
     constructor(id,fname,lname,email,pass,gender,vegetarian,budget,location,type){
         super(id,fname,lname,email,pass,gender);
         this.vegetarian = vegetarian;
@@ -25,9 +34,12 @@ export class Customer extends User{
     displayInfo(){
         return this;
     }
+
+   
 }
 
 export class admin extends User{
+   
     constructor(id,fname,lname,email,pass,gender,type){
         super(id,fname,lname,email,pass,gender);
         this.type = type;

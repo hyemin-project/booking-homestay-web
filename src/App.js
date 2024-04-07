@@ -5,6 +5,7 @@ import FileService from "./services/FileService";
 import Link from "./conponents/link/Link";
 import Login from "./pages/Login";
 import Logout from "./pages/Logout";
+import Admin from "./pages/Admin";
 
 
 
@@ -32,15 +33,33 @@ function App() {
 
   // login 
   const Auth = (userObj) => {
-    for (let user of users){
-      if(user.email === userObj.email && user.pass === userObj.pass){
-        setLoginUser(user);
+
+        let foundUser = null ;
+        // iterate through the users array to find the user
+        for (let user of users){
+          if(user.email === userObj.email && user.pass === userObj.pass){
+            foundUser = user;
+            break; 
+          }
+        }
+
+        
+        // if user is found, set the loginUser state to the found user
+        if(foundUser){
+          setLoginUser(foundUser);
+          console.log("login success");
+        }
+
+
+        // if user is not found, alert user not found
+        else{
+          console.log("login failed");
+          alert("Login failed: User not found or incorrect password")
+          setLoginUser(null);
+        }
       
+        console.log("user login logniUser is "+ loginUser+" "+userObj.fname + " " + userObj.lname);
       }
-    }
-    console.log("login success");
-    console.log("user login logniUser is "+ loginUser+" "+userObj.fname + " " + userObj.lname);
-  }
 
   // log out user
   const logoutUser =() =>{
@@ -56,7 +75,7 @@ function App() {
         <Route path="/" element={<Link loginUser={loginUser} />}>
               <Route index element={<Homestay loginUser={loginUser} logout={logoutUser} />}/>  
               <Route path="login" element={<Login auth={Auth} loginUser={loginUser} />} />
-
+              <Route path="admin" element={<Admin loginUser={loginUser} logout={logoutUser} users={users}/>} />
               {/* <Route path="logout" element={<Logout  />} />
               <Route path="*" element={<NoPage />} /> */} 
         </Route>
