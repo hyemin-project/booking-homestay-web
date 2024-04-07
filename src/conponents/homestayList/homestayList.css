@@ -42,8 +42,15 @@
     justify-content: space-between;
 }
 
-
-
+.homestayRate{
+    color:#ffb700;
+    align-items: center;
+}
+.homestayRatetext{
+    color:black;
+    font-size: 14px;
+    align-items: center;
+}
 .homestayDescription{
     width:380px;
 }
@@ -139,3 +146,41 @@
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.12);
   }
   
+
+/* search result display */
+
+.searchResult h3 {
+    margin-bottom: 0.5rem; 
+    font-size: 1.6rem; 
+    font-weight:700;
+}
+
+.searchResult h4 {
+    margin-bottom: 0.5rem; 
+    font-size: 1.2rem; 
+    font-weight:700;
+}
+
+
+/* Styling specifically for the most valuable homestay message */
+.mostValuableHomestay {
+    color: #2F80ED; 
+    font-weight: bold;
+    background-color: rgba(0, 123, 255, 0.1); 
+    padding: 10px 15px; 
+    border-radius: 5px; 
+    display: inline-block; /* Only take up as much space as necessary */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* A subtle shadow for depth */
+    margin-top: 10px; 
+    transition: transform 0.2s; 
+}
+
+.mostValuableHomestay:hover {
+    transform: translateY(-2px); /* Slight lift effect on hover */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15); 
+}
+
+.mostValuableHomestayTitle{
+    color: #00695c; 
+    font-weight: 600; 
+}
