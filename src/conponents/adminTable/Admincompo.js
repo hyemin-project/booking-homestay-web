@@ -51,7 +51,7 @@ const Admincompo = (props) => {
               </tr>
             </thead>
             <tbody>
-              {filteredClients.map((client) => ( // Ensure you use filteredClients here
+              {filteredClients.map((client) => ( 
                 <tr key={client.id}>
                   <td>{client.id}</td>
                   <td>{client.fname}</td>

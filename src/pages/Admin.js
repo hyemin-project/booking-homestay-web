@@ -22,7 +22,8 @@ const Admin = (props) =>{
         } 
         else if(props.loginUser.type !== "admin"){
             navigate("/login");
-        }else{
+        }
+        else{
 
             // create each client obj and store in the clientData array
            const clients= props.users.filter(user=>user.type ==="client").map( user => new client(user.id,user.fname,user.lname,user.email,
