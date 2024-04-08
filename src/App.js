@@ -6,8 +6,8 @@ import Link from "./conponents/link/Link";
 import Login from "./pages/Login";
 import Logout from "./pages/Logout";
 import Admin from "./pages/Admin";
-
-
+import {AES, enc} from "crypto-js";
+import {client, admin} from "./class/user";
 
 
 function App() {
@@ -26,9 +26,33 @@ function App() {
           (rej) => {
               console.log(rej);
           }
-      )
+      ) 
+
+      const encryptedUser = sessionStorage.getItem("loginUser");
+      console.log("encrypted user is "+ encryptedUser)
+      if (encryptedUser) {
+        const decryptedUser = AES.decrypt(encryptedUser, 'webdev').toString(enc.Utf8);
+        console.log("decrypted user is "+ decryptedUser)
+        if (decryptedUser) {
+          let tmpUser = JSON.parse(decryptedUser);
+          console.log("decrypted user is "+ tmpUser)
+          setLoginUser(tmpUser);
+        }
+      }
 
   }, [])
+
+  useEffect(() => {
+
+   
+    if (loginUser) {
+      const cipherUser = AES.encrypt(JSON.stringify(loginUser), 'webdev').toString();
+      sessionStorage.setItem('loginUser', cipherUser);
+    } else {
+      sessionStorage.removeItem('loginUser');
+    }
+
+  }, [loginUser]);
 
 
   // login 
@@ -43,14 +67,29 @@ function App() {
           }
         }
 
-        
+        let tmpUser = null;
         // if user is found, set the loginUser state to the found user
         if(foundUser){
-          setLoginUser(foundUser);
+
+          if (foundUser.type === 'admin') {
+            
+            tmpUser = new admin(foundUser.id,foundUser.fname,foundUser.lname,foundUser.email,foundUser.pass,foundUser.gender,foundUser.type);
+            console.log(" new admin tmpUser created " + tmpUser.fname + " " + tmpUser.lname + " " + tmpUser.email + " " + tmpUser.pass + " " + tmpUser.gender+ " " + tmpUser.type)
+          }
+
+          if (foundUser.type === 'client') {
+            tmpUser = new client(foundUser.id,foundUser.fname,foundUser.lname,foundUser.email,foundUser.pass,foundUser.gender,foundUser.vegetarian,foundUser.budget,foundUser.location,foundUser.type);
+           
+      
+          }
+          
           console.log("login success");
         }
 
-
+        if (tmpUser) {
+          setLoginUser(tmpUser);
+          console.log("login success");
+        }
         // if user is not found, alert user not found
         else{
           console.log("login failed");
@@ -64,7 +103,7 @@ function App() {
   // log out user
   const logoutUser =() =>{
     setLoginUser(null);
-   
+    sessionStorage.removeItem('loginUser');
   }
 
 

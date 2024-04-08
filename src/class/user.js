@@ -19,6 +19,8 @@ class User{
         return this.#email;
     
     }
+
+ 
 }
 
 export class client extends User{
@@ -35,6 +37,7 @@ export class client extends User{
         return this;
     }
 
+
    
 }
 
@@ -43,10 +46,13 @@ export class admin extends User{
     constructor(id,fname,lname,email,pass,gender,type){
         super(id,fname,lname,email,pass,gender);
         this.type = type;
+    
     }
     displayInfo(){
         return this;
     }
+
+ 
 }
 
 export default User;

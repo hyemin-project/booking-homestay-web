@@ -6,8 +6,8 @@ import { useState } from 'react';
 const Admincompo = (props) => {
   console.log("here is admin compo ->each user data" + props.clientData)
   const newClient = new client(1, "John", "Doe", "john.doe@example.com", "password123", "Male", true, 500, "New York", "client");
-  console.log("this is new client" + newClient.email);  // test email is private
-  console.log("this is new client" + newClient.userEmail);  // test userEmail funciton can be accessed
+  console.log("this is testing new client " + newClient.email);  // test email is private
+  console.log("this is testing new client " + newClient.userEmail);  // test userEmail funciton can be accessed
 
 
   const [searchTerm, setSearchTerm] = useState("");
