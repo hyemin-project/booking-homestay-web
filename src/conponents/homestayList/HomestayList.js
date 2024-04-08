@@ -90,6 +90,7 @@ const HomestayList = (props) => {
                                         <h5 className="homestayTitle">{homestay.title}</h5>
                                         <h5 className="homestayRate"> {convertRatingToStar(homestay.rating)}<span className="homestayRatetext">&nbsp;{homestay.rating}</span></h5>
                                         <p className="homestayDescription">{homestay.desc}</p>
+                                        <p className = "amenities">{homestay.amenities.join(", ")}</p>
                                         <button className="seeAvailability">See Availability</button>
                                     </div>
 
