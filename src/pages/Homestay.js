@@ -30,6 +30,7 @@ const Homestay = (props) => {
     // Update the matched homestays when the user changes or the homestay list updates
     useEffect(() => {
         if (props.loginUser) {
+          
             const matches = matchingHomestays(homestays, props.loginUser);
             // Update the matched homestays
             setMatchedHomestays(matches); 

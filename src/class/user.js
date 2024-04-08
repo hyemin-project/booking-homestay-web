@@ -43,9 +43,10 @@ export class client extends User{
 
 export class admin extends User{
    
-    constructor(id,fname,lname,email,pass,gender,type){
+    constructor(id,fname,lname,email,pass,gender,type,budget=9999){
         super(id,fname,lname,email,pass,gender);
         this.type = type;
+        this.budget = Number(budget);
     
     }
     displayInfo(){

@@ -74,7 +74,7 @@ function App() {
           if (foundUser.type === 'admin') {
             
             tmpUser = new admin(foundUser.id,foundUser.fname,foundUser.lname,foundUser.email,foundUser.pass,foundUser.gender,foundUser.type);
-            console.log(" new admin tmpUser created " + tmpUser.fname + " " + tmpUser.lname + " " + tmpUser.email + " " + tmpUser.pass + " " + tmpUser.gender+ " " + tmpUser.type)
+            console.log(" new admin tmpUser created " + tmpUser.fname + " " + tmpUser.lname + " " + tmpUser.email + " " + tmpUser.pass + " " + tmpUser.gender+ " " + tmpUser.type+ ""  + tmpUser.budget)
           }
 
           if (foundUser.type === 'client') {
