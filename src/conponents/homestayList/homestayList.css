@@ -110,13 +110,13 @@
     transform: scale(0.9);
 }
 
-.likeIcon i {
-    transition: color 0.2s;
+.likeIcon.favorited {
+    color: #E91E63; 
+    animation: pulse 1s;
 }
 
-
-.likeIcon.liked i {
-    color: #E91E63; 
+.likeIcon.notFavorited {
+    color: gray; 
     animation: pulse 1s;
 }
 

@@ -88,7 +88,7 @@ const Navbar = (props) => {
                     {/* implement favorite list logic here */}
                     <div className="favoriteList">
                         <FontAwesomeIcon icon={faHeart} className="favoriteIcon" />
-                        <span className="favoriteCount">0</span>
+                        <span className="favoriteCount">{props.countLike}</span>
                     </div>
                     {/* implement multiple language logic here */}
                     <div className="languageSelection">

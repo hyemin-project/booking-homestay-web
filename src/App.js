@@ -8,12 +8,16 @@ import Logout from "./pages/Logout";
 import Admin from "./pages/Admin";
 import {AES, enc} from "crypto-js";
 import {client, admin} from "./class/user";
-
+import Favorite from './class/favoriteList';
 
 function App() {
-
+  
+  const [countLike, setCountLike] = useState(0);
   const [users,setUsers] = useState(null);
   const [loginUser, setLoginUser] = useState(null);
+  // user favorite list object -> initialize empty favorite list to avoid null pointer exception
+  const [favoriteListObj , setFavoriteListObj] = useState(new Favorite(null));
+
   // const [homestays, setHomestay] = useState(null);
 
   // read user data from json file
@@ -21,7 +25,7 @@ function App() {
       FileService.read("user").then(
           (response) => {
               setUsers(response.data);
-              console.log(response.data);
+              // console.log(response.data);
           },
           (rej) => {
               console.log(rej);
@@ -29,22 +33,21 @@ function App() {
       ) 
 
       const encryptedUser = sessionStorage.getItem("loginUser");
-      console.log("encrypted user is "+ encryptedUser)
+      // console.log("encrypted user is "+ encryptedUser)
       if (encryptedUser) {
         const decryptedUser = AES.decrypt(encryptedUser, 'webdev').toString(enc.Utf8);
-        console.log("decrypted user is "+ decryptedUser)
+        // console.log("decrypted user is "+ decryptedUser)
         if (decryptedUser) {
           let tmpUser = JSON.parse(decryptedUser);
-          console.log("decrypted user is "+ tmpUser)
+          // console.log("decrypted user is "+ tmpUser)
           setLoginUser(tmpUser);
         }
       }
 
   }, [])
 
-  useEffect(() => {
 
-   
+  useEffect(() => { 
     if (loginUser) {
       const cipherUser = AES.encrypt(JSON.stringify(loginUser), 'webdev').toString();
       sessionStorage.setItem('loginUser', cipherUser);
@@ -53,6 +56,8 @@ function App() {
     }
 
   }, [loginUser]);
+
+
 
 
   // login 
@@ -79,8 +84,8 @@ function App() {
 
           if (foundUser.type === 'client') {
             tmpUser = new client(foundUser.id,foundUser.fname,foundUser.lname,foundUser.email,foundUser.pass,foundUser.gender,foundUser.vegetarian,foundUser.budget,foundUser.location,foundUser.type);
-           
-      
+            let favoriteList = new Favorite(tmpUser.id);
+            setFavoriteListObj(favoriteList);
           }
           
           console.log("login success");
@@ -100,20 +105,36 @@ function App() {
         console.log("user login logniUser is "+ loginUser+" "+userObj.fname + " " + userObj.lname);
       }
 
+
   // log out user
   const logoutUser =() =>{
     setLoginUser(null);
     sessionStorage.removeItem('loginUser');
   }
 
+  //handle count like 
+  const handleCountLike = (isLike) => {
+    if (isLike) {
+        setCountLike(countLike + 1);
+        // console.log('get FavoriteList'+favoriteListObj.getFavoritesList())
+        // for(let hmName of favoriteListObj.getFavoritesList()){
+        //     console.log('get FavoriteList'+hmName.title)
+        // }
+    }else{
+
+        setCountLike(countLike - 1);
+
+    }
+    console.log("click like number " + countLike);
+}
 
 
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Link loginUser={loginUser} />}>
-              <Route index element={<Homestay loginUser={loginUser} logout={logoutUser} />}/>  
-              <Route path="login" element={<Login auth={Auth} loginUser={loginUser} />} />
+              <Route index element={<Homestay loginUser={loginUser} logout={logoutUser} countLike={countLike} handleCountLike={handleCountLike} favoriteListObj={favoriteListObj}/>}/>  
+              <Route path="login" element={<Login auth={Auth} loginUser={loginUser} countLike={countLike} />} />
               <Route path="admin" element={<Admin loginUser={loginUser} logout={logoutUser} users={users}/>} />
               {/* <Route path="logout" element={<Logout  />} />
               <Route path="*" element={<NoPage />} /> */} 

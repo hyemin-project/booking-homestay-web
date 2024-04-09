@@ -19,6 +19,8 @@ const Homestay = (props) => {
 
     const [searchPlaceholder, setSearchPlaceholder] = useState("Search by homestay name");
 
+    
+
     let jsonFileName = "homestay";
     // Read homestay data from the JSON file
     useEffect(() => {
@@ -179,11 +181,12 @@ const Homestay = (props) => {
     };
 
 
+
     return (
 
         <div>
             {/* pass login user and logout function to navbar */}
-            <Navbar loginUser={props.loginUser} logoutUser={props.logout} language={getLanguage} />
+            <Navbar loginUser={props.loginUser} logoutUser={props.logout} language={getLanguage} countLike={props.countLike}/>
             <Header language={language} />
 
             <div className="listContainer">
@@ -204,7 +207,7 @@ const Homestay = (props) => {
 
                     {/* display homestay list */}
                     <div className="listResult">
-                        <HomestayList matchingHomestays={matchedHomestays} loginUser={props.loginUser} handleSort={handleSort} />
+                        <HomestayList matchingHomestays={matchedHomestays} loginUser={props.loginUser} favoriteListObj={props.favoriteListObj} handleSort={handleSort} handleCountLike={props.handleCountLike} />
                     </div>
                 </div>
             </div>

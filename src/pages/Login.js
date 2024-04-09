@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 
 const Login = (props) => {
-
+  
     const [user,setUser] = useState({email:"",pass:""});
     const navigate = useNavigate(); // use navigate hook
     // const handleLogin = (e) => {
@@ -47,7 +47,7 @@ const Login = (props) => {
     return (
 
         <>
-        <Navbar loginUser={props.loginUser}/>
+        <Navbar loginUser={props.loginUser} countLike={props.countLike}/>
         <section style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
         <div className="container" >
         <div className="card border-light-subtle shadow-sm" >
