@@ -47,7 +47,6 @@ const HomestayList = (props) => {
                         )}
                     </div>
 
-
                     {/* sorted button here */}
                     <Dropdown>
                         <Dropdown.Toggle variant="success" id="dropdown-basic">
@@ -65,8 +64,10 @@ const HomestayList = (props) => {
                             <Dropdown.Item onClick={()=>props.handleSort('priceLow')}>Sorted by price (low to high)</Dropdown.Item>
                             <Dropdown.Item onClick={()=>props.handleSort('rateHigh')}>Sorted by rate&nbsp;  (high to low)</Dropdown.Item>
                             <Dropdown.Item onClick={()=>props.handleSort('rateLow')}>Sorted by rate&nbsp; (low to high)</Dropdown.Item>
+                            
                         </Dropdown.Menu>
                     </Dropdown>
+
                 </div>
 
                 <div className="homestayDisplay">

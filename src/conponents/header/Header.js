@@ -2,14 +2,28 @@ import "./header.css";
 import { LoremIpsum } from 'lorem-ipsum';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faHouse,faCalendarDays,faPerson} from '@fortawesome/free-solid-svg-icons';
+import { useState, useEffect } from 'react';    
 
-
-const Header = () => {
+const Header = (props) => {
 
     // Create an instance of the LoremIpsum class
      const lorem = new LoremIpsum();
     // Generate 25 "words" of Lorem Ipsum text
     const loremText = lorem.generateWords(25);
+
+    const [headerText, setHeaderText] = useState("Search by homestay name");
+
+    useEffect(() => {
+        if (props.language === 'kr') {
+            setHeaderText("최고의 홈스테이를 찾아보세요");
+        } else if (props.language === 'ch') {
+            setHeaderText("開始尋找你的寄宿家庭");
+        } else if (props.language === 'br') {
+            setHeaderText("Comece a procurar sua família anfitriã");
+        } else {
+            setHeaderText("Start to find your amazing homestay");
+        }
+    }, [props.language]);
 
     return (
         <div className="header">
@@ -23,7 +37,7 @@ const Header = () => {
 
 
 
-                <h1 className ="headerTitle">Start to find your amazing homestay</h1>
+                <h1 className ="headerTitle">{headerText}</h1>
                 <p className="headerDesc">
                         {loremText}
                 </p>

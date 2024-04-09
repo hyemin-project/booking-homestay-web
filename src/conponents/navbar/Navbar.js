@@ -1,7 +1,7 @@
 import "./navbar.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faGlobe,faUser } from '@fortawesome/free-solid-svg-icons';
-import React, { useState,useEffect } from 'react';
+import React, { useState,useEffect, useRef } from 'react';
 import { useNavigate,useLocation } from "react-router-dom";
 
 
@@ -13,7 +13,8 @@ const Navbar = (props) => {
     const [logo, setLogo] = useState('BookMyHomestay'); // Default logo
     const location = useLocation(); // Get the current location -> localhost:3000/admin or else
     const navigate = useNavigate();
-
+    const dropdownRef = useRef(null);
+    
     useEffect(() => {
         // Check if in the admin page or not
         if (props.loginUser && props.loginUser.type === 'admin') {
@@ -25,6 +26,20 @@ const Navbar = (props) => {
 
     // React to changes in location
     }, [props.loginUser]); 
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setShowDropdown(false);
+            }
+        };
+
+        // Add when the dropdown is shown
+        if (showDropdown) {
+            document.addEventListener('mousedown', handleClickOutside);
+        }
+
+    }, [showDropdown]);
 
 
     const handleLogin = () => {
@@ -48,6 +63,11 @@ const Navbar = (props) => {
         }else{
             navigate('/');
         }
+    }
+
+    const languageSelect = (e)=>{
+        props.language(e.target.id);
+        console.log("language selected" + e.target)
     }
 
     return (
@@ -74,10 +94,11 @@ const Navbar = (props) => {
                     <div className="languageSelection">
                         <FontAwesomeIcon icon={faGlobe} className="languageIcon" onClick={() => setShowDropdown(!showDropdown)} />
                         {showDropdown && (
-                            <div className="languageDropdown">
-                                <div className="languageOption" onClick={() => alert('English Selected')}>Korean</div>
-                                <div className="languageOption" onClick={() => alert('Chinese Selected')}>Chinese</div>
-                                <div className="languageOption" onClick={() => alert('Brazilian Selected')}>Brazilian</div>
+                            <div className="languageDropdown" ref={dropdownRef} >
+                                <div className="languageOption" onClick={(e) => languageSelect(e)} id="en"> English</div>
+                                <div className="languageOption" onClick={(e) => languageSelect(e)} id="kr"> Korean</div>
+                                <div className="languageOption" onClick={(e) => languageSelect(e)} id="ch"> Chinese</div>
+                                <div className="languageOption" onClick={(e) => languageSelect(e)} id="br"> Brazilian</div>
                             </div>
                         )}
                     </div>
