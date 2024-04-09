@@ -28,6 +28,14 @@ const Navbar = (props) => {
         navigate('/')
     }
 
+    const goFavoriteList = () => {
+        navigate('/fav')
+    }
+
+    const languageSelect = (e)=>{
+        props.language(e.target.id);
+    }
+
     return (
         <div className="navbar">
             <div className="navContainer">
@@ -43,17 +51,17 @@ const Navbar = (props) => {
 
                     {/* implement favorite list logic here */}
                     <div className="favoriteList">
-                        <FontAwesomeIcon icon={faHeart} className="favoriteIcon" />
-                        <span className="favoriteCount">0</span>
+                        <FontAwesomeIcon icon={faHeart} className="favoriteIcon" onClick={goFavoriteList} />
+                        <span className="favoriteCount">{props.countFav}</span>
                     </div>
                     {/* implement multiple language logic here */}
                     <div className="languageSelection">
                         <FontAwesomeIcon icon={faGlobe} className="languageIcon" onClick={() => setShowDropdown(!showDropdown)} />
                         {showDropdown && (
                             <div className="languageDropdown">
-                                <div className="languageOption" onClick={() => alert('English Selected')}>Korean</div>
-                                <div className="languageOption" onClick={() => alert('Chinese Selected')}>Chinese</div>
-                                <div className="languageOption" onClick={() => alert('Brazilian Selected')}>Brazilian</div>
+                                <div className="languageOption" onClick={(e) => languageSelect(e)} id="kr">Korean</div>
+                                <div className="languageOption" onClick={(e) => languageSelect(e)} id="ch">Chinese</div>
+                                <div className="languageOption" onClick={(e) => languageSelect(e)} id="br">Brazilian</div>
                             </div>
                         )}
                     </div>
@@ -64,7 +72,6 @@ const Navbar = (props) => {
                             <span>Welcome {props.loginUser && props.loginUser.fname} {props.loginUser && props.loginUser.lname}</span>
                         ) : (
                             <span>Welcome Guest</span>
-                        
                         )}
                         
                         <FontAwesomeIcon icon={faUser} style={{ marginLeft: '20px', fontSize: '1.5rem' }}/>
