@@ -180,7 +180,7 @@ function App() {
           <Route index element={<Homestay loginUser={loginUser} logout={logoutUser} countLike={countLike} handleCountLike={handleCountLike} favoriteListObj={favoriteListObj} />} />
           <Route path="login" element={<Login auth={Auth} loginUser={loginUser} countLike={countLike} />} />
           <Route path="admin" element={<Admin loginUser={loginUser} logout={logoutUser} users={users} countLike={countLike} />} />
-          <Route path="fav" element={<FavoriteList loginUser={loginUser} logout={logoutUser} countLike={countLike} favorites={favoriteListObj} />} />
+          <Route path="fav" element={<FavoriteList loginUser={loginUser} logout={logoutUser} countLike={countLike} favorites={favoriteListObj} handleCountLike={handleCountLike}  />} />
           {/* <Route path="logout" element={<Logout  />} />
               <Route path="*" element={<NoPage />} /> */}
         </Route>

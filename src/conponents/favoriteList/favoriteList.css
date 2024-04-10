@@ -51,12 +51,14 @@
     background-color: white;
     opacity: 0.9;
     position:relative;
+    
 }
 
 .siImg_fav {
     width:275px;
     height:240px;
     object-fit:cover;
+   
 }
 
 .favoriteInfo-wrapper{
@@ -131,8 +133,7 @@
     font-weight: 700;
 }
 
-/* like icon */
-.likeIcon {
+.removeFav {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -144,43 +145,10 @@
     background-color: transparent;
     outline: none;
     transition: transform 0.2s ease, color 0.2s ease;
-}
-
-.likeIcon:hover, .likeIcon:focus {
-    transform: scale(1.2);
-    color: #E91E63; /* Adjust the color based on your preference */
-}
-
-.likeIcon:active {
-    transform: scale(0.9);
-}
-
-.likeIcon i {
-    transition: color 0.2s;
+    
 }
 
 
-.likeIcon.liked i {
-    /* color: #E91E63;  */
-    color: #ccc;
-    animation: pulse 1s;
-}
-
-.likeIcon.liked.clicked i {
-    color: #E91E63; 
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
 
 /* See availability button  */
 .seeAvailability {
@@ -248,9 +216,21 @@
     margin: 20px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions for interactive effects */
+    animation: pulsing 2s infinite;
 }
 
 .emptyListMessage:hover {
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.45); /* Enhanced shadow on hover for a floating effect */
     transform: scale(1.05); /* Slightly enlarge on hover to attract attention */
+}
+
+@keyframes pulsing {
+    0%, 100% {
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
+        transform: scale(1.04);
+    }
 }
