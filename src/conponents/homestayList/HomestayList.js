@@ -15,7 +15,7 @@ const HomestayList = (props) => {
 
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage, setPostsPerPage] = useState(10);
-  
+
     const firstPostIndex = (currentPage - 1) * postsPerPage;
     const lastPostIndex = firstPostIndex + postsPerPage;
 
@@ -28,12 +28,14 @@ const HomestayList = (props) => {
         return star;
     }
 
-    const clickFavorite = (homestay) => {
+    const clickFavorite = (homestay, idx) => {
         if (props.loginUser != null) {
-            setFavoriteMark(!favoriteMark);
+            //setFavoriteMark(!favoriteMark);
             let homeObj = new HomestayObj(homestay.id, homestay.title, homestay.desc, homestay.location, homestay.rating, homestay.price_per_month, homestay.amenities, homestay.vegetarian_friendly, homestay.image_path);
             props.favorite(homeObj);
-
+            const newArr = Array(postsNum.length).fill(false);
+            newArr[idx] = true;
+            setFavoriteMark(newArr);
         } else {
             alert("Only login user can use the favorite list!");
             navigate('/login');
@@ -68,13 +70,13 @@ const HomestayList = (props) => {
 
                 <div className="homestayDisplay">
                     {/* check if props.homestays is not null, then map through the homestays array and display each homestay */}
-                    {props.homestays && props.homestays.map((homestay) => {
+                    {props.homestays && props.homestays.map((homestay, idx) => {
                         return (
                             //searchItem
                             <div className="homestayCard" key={homestay.id}>
 
                                 {/* implement add to like list logic here */}
-                                <div className={favoriteMark ? "likeIcon" : "likeIcon liked clicked"} onClick={() => clickFavorite(homestay)}>
+                                <div className={favoriteMark ? "likeIcon" :"likeIcon liked clicked" } onClick={() => clickFavorite(homestay, idx)}>
                                     <FontAwesomeIcon icon={faHeart} />
                                 </div>
 
