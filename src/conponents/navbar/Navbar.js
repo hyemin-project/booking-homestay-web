@@ -103,7 +103,7 @@ const Navbar = (props) => {
                                 <div className="languageOption" onClick={(e) => languageSelect(e)} id="en"> English</div>
                                 <div className="languageOption" onClick={(e) => languageSelect(e)} id="kr"> Korean</div>
                                 <div className="languageOption" onClick={(e) => languageSelect(e)} id="ch"> Chinese</div>
-                                <div className="languageOption" onClick={(e) => languageSelect(e)} id="br"> Brazilian</div>
+                                <div className="languageOption" onClick={(e) => languageSelect(e)} id="br"> Portuguese</div>
                             </div>
                         )}
                     </div>
