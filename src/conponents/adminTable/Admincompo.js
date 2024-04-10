@@ -20,12 +20,14 @@ const Admincompo = (props) => {
   const getTitleList = (clientId) => {
     const favoriteData = localStorage.getItem(clientId);
     if (favoriteData) {
-      const homestays = JSON.parse(favoriteData);
-
-      return homestays.map(homestay => homestay.title).join(', ');
+        const homestays = JSON.parse(favoriteData);
+        if (homestays.length === 0) {
+            return 'No favorites stored';
+        }
+        return homestays.map(homestay => homestay.title).join(', ');
     }
     return 'No favorites stored';
-  }
+}
 
   // Get the number of homestays that the client has favorited
   const getDreamCount = (clientId) => {
@@ -78,7 +80,7 @@ const Admincompo = (props) => {
             <th style={equalWidthStyle}>User Budget</th>
             <th style={equalWidthStyle}>User Type</th>
             <th style={equalWidthStyle}>View User Dream List</th>
-            <th style={equalWidthStyle}>Favorite Homestay Count</th>
+            <th style={equalWidthStyle}>Favorite Homestays</th>
           </tr>
         </thead>
         <tbody>

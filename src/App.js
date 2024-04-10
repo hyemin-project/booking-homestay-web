@@ -44,21 +44,67 @@ function App() {
       // console.log("decrypted user is "+ decryptedUser)
       if (decryptedUser) {
         let tmpUser = JSON.parse(decryptedUser);
-        // console.log("decrypted user is "+ tmpUser)
+        console.log("decrypted user is "+ tmpUser)
         setLoginUser(tmpUser);
+
+        console.log("this is tmpuser " + tmpUser.id )
+
+
+        // keep the favorite list in the local storage -> when user refresh the page, the favorite list will not be lost
+        const tmpFavoriteList = new Favorite(tmpUser.id);
+        const storedFavoriteList = localStorage.getItem(tmpUser.id);
+        console.log("login user id " + tmpUser.id + " read favorite list from local storage" + storedFavoriteList)
+        if (storedFavoriteList) {
+
+          const favoritesArray = JSON.parse(storedFavoriteList);
+          // console.log("user id " + tmpUser.id + " read favorite list from local storage" + favoritesArray)
+          for (let fav of favoritesArray) {
+            try {
+              let homeObj = new HomestayObj(
+                fav.hid, fav.title, fav.desc, fav.location, fav.rating,
+                fav.price_per_month, fav.amenities, fav.vegetarian_friendly, fav.image_path
+              );
+              // console.log("Created HomestayObj:", homeObj.title);
+              // add the homestay object to the favorite list
+              tmpFavoriteList.populateDataToObj(homeObj); 
+              console.log("list size " + tmpFavoriteList.getFavoriteSize());
+  
+              // set the count of likes to the size of the favorite list
+              setCountLike(tmpFavoriteList.getFavoriteSize());
+             
+              
+            } catch (error) {
+              console.error("Failed to create HomestayObj:", error);
+            }
+  
+       
+          }
+  
+  
+        }
+        // set the favorite list object to the temporary favorite list
+        setFavoriteListObj(tmpFavoriteList);
+        console.log("Populated favorite list from local storage success");
       }
+
     }
 
-  }, [])
+     
+
+    }, [])
 
 
   useEffect(() => {
     if (loginUser) {
       const cipherUser = AES.encrypt(JSON.stringify(loginUser), 'webdev').toString();
       sessionStorage.setItem('loginUser', cipherUser);
+
+
     } else {
       sessionStorage.removeItem('loginUser');
     }
+
+    
 
   }, [loginUser]);
 
@@ -96,7 +142,7 @@ function App() {
        
       }
 
-      console.log("founder user is " + foundUser.id + " " + foundUser.fname + " " + foundUser.lname + " " + foundUser.email + " " )
+      // console.log("founder user is " + foundUser.id + " " + foundUser.fname + " " + foundUser.lname + " " + foundUser.email + " " )
 
       const tmpFavoriteList = new Favorite(foundUser.id);
       const storedFavoriteList = localStorage.getItem(tmpUser.id);
@@ -106,14 +152,14 @@ function App() {
       if (storedFavoriteList) {
 
         const favoritesArray = JSON.parse(storedFavoriteList);
-        console.log("user id " + tmpUser.id + " read favorite list from local storage" + favoritesArray)
+        // console.log("user id " + tmpUser.id + " read favorite list from local storage" + favoritesArray)
         for (let fav of favoritesArray) {
           try {
             let homeObj = new HomestayObj(
               fav.hid, fav.title, fav.desc, fav.location, fav.rating,
               fav.price_per_month, fav.amenities, fav.vegetarian_friendly, fav.image_path
             );
-            console.log("Created HomestayObj:", homeObj.title);
+            // console.log("Created HomestayObj:", homeObj.title);
             // add the homestay object to the favorite list
             tmpFavoriteList.populateDataToObj(homeObj); 
             console.log("list size " + tmpFavoriteList.getFavoriteSize());

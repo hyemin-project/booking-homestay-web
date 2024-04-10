@@ -10,9 +10,13 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 const FavoriteList = (props) => {
     const navigate = useNavigate();
     useEffect(() => {
-        if (props.loginUser == null) {
-            alert("Please login first!!");
-            navigate('/login');
+        // if (props.loginUser == null) {
+        //     alert("Please login first!!");
+        //     navigate('/login');
+        // }
+        if (props.loginUser){
+            console.log("user is logged in" + props.loginUser.type) 
+            props.loginUser.type!="client" && props.loginUser.type!="admin" ? navigate('/login') : console.log("user is client or admin")
         }
     }, [])
 
