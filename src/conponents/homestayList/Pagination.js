@@ -1,42 +1,18 @@
-export default function Pagination({postsNum,postsPerPage,setCurrentPage,currentPage}) {
-    const pageList = [];
-    const totalPages = Math.ceil(postsNum / postsPerPage);
-  
-    for (let i = 1; i <= totalPages; i++) {
-      pageList.push(i);
-    }
-  
-    const goToNextPage = () => {
-      setCurrentPage(currentPage + 1);
-    };
-  
-    const goToPrevPage = () => {
-      setCurrentPage(currentPage - 1);
-    };
-  
-    if (totalPages === 1) {
-      return null;
-    }
-  
-    return (
-      <div>
-        <button onClick={goToPrevPage} disabled={currentPage === 1}>
-          prev
-        </button>
-  
-        {pageList.map((page) => (
-          <button
-            key={page}
-            onClick={() => setCurrentPage(page)}
-            className={currentPage === page ? "active" : ""}
-          >
-            {page}
-          </button>
-        ))}
-  
-        <button onClick={goToNextPage} disabled={currentPage === pageList.length}>
-          next
-        </button>
-      </div>
-    );
-  }
+import React from "react";
+import ReactPaginate from "react-paginate";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import "./pagination.css";
+
+export default function Pagination(props){
+  return (
+    <ReactPaginate
+      previousLabel={<FiChevronLeft />}
+      nextLabel={<FiChevronRight />}
+      pageCount={props.pageCount}
+      onPageChange={props.onPageChange}
+      containerClassName={"pagination"}
+      pageLinkClassName={"pagination__link"}
+      activeLinkClassName={"pagination__link__active"}
+    />
+  );
+};
