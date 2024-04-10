@@ -36,6 +36,25 @@ export default class Favorite{
      
     }
 
+    populateDataToObj(homestay) {
+        console.log("toggle favorite add " + homestay.hid);
+        if (this.#favorites.has(homestay.hid)) {
+
+            this.#favorites.delete(homestay.hid);
+            // console.log("favorite list delete " + homestay.hid);
+            console.log("favorite list length " + this.#favorites.size)
+        } else {
+            this.#favorites.set(homestay.hid, homestay);
+            // for(let key of this.#favorites.keys()){
+            //     console.log("favorite list has " + key);
+            // }
+            
+        }
+
+       
+     
+    }
+
     getFavoriteSize(){
         return this.#favorites.size;
     }
@@ -51,14 +70,11 @@ export default class Favorite{
     }
 
     // save favorite list to local storage
-    saveFavoriteListToLocalStorage(){
-        const favoritesArray = Array.from(this.#favorites.values());
-        console.log("user id " + this.#uid + " save favorite list to local storage" + favoritesArray)
-        for (let hm of favoritesArray){
-            console.log("favorite list has " + hm.title);
-        }
+    saveFavoriteListToLocalStorage() {
+        //converts the each HomestayObj instance with private fields into a
+        // new object with the same data but in a public structure
+        const favoritesArray = Array.from(this.#favorites.values()).map(homestay => homestay.serialize());
         localStorage.setItem(this.#uid, JSON.stringify(favoritesArray));
-``
     }
 
    
@@ -87,6 +103,23 @@ export class HomestayObj{
         this.#amenities = amenities;
         this.#vegetarian_friendly = vegetarian_friendly;
         this.#image_path = image_path;
+        console.log("homestay obj created " );
+    }
+
+    //convert the instance with its private properties into a plain JavaScript object 
+    //with the same property values, but publicly accessible.
+    serialize() {
+        return {
+            hid: this.#hid,
+            title: this.#title,
+            desc: this.#desc,
+            location: this.#location,
+            rating: this.#rating,
+            price_per_month: this.#price_per_month,
+            amenities: this.#amenities,
+            vegetarian_friendly: this.#vegetarian_friendly,
+            image_path: this.#image_path
+        };
     }
 
     get hid(){
@@ -109,6 +142,7 @@ export class HomestayObj{
         return this.#rating;
     }
 
+
     get price_per_month(){
         return this.#price_per_month;
     }
@@ -123,4 +157,8 @@ export class HomestayObj{
     get image_path(){
         return this.#image_path;
     }
+
+     objsuccess(){
+        return "obj success created";
+     }
 }

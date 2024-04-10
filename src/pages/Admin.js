@@ -16,6 +16,7 @@ const Admin = (props) =>{
     useEffect(() => {
 
         if (props.loginUser== null) {
+            alert("please login first")
             navigate("/login");
          
            
