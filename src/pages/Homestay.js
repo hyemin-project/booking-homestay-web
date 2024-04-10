@@ -152,7 +152,7 @@ const Homestay = (props) => {
     };
 
 
-    // fucntion to sort homestay list
+    // fucntion to sort homestay  list
     const handleSort = (sortType) => {
         let sortedHomestays = [];
 
