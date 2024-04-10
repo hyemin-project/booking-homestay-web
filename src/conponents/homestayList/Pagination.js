@@ -1,0 +1,18 @@
+import React from "react";
+import ReactPaginate from "react-paginate";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import "./pagination.css";
+
+export default function Pagination(props){
+  return (
+    <ReactPaginate
+      previousLabel={<FiChevronLeft />}
+      nextLabel={<FiChevronRight />}
+      pageCount={props.pageCount}
+      onPageChange={props.onPageChange}
+      containerClassName={"pagination"}
+      pageLinkClassName={"pagination__link"}
+      activeLinkClassName={"pagination__link__active"}
+    />
+  );
+};

@@ -1,8 +1,13 @@
 [
   {
     "id": "001",
+<<<<<<< HEAD
+    "title": "中央城市舒適撤退",
+    "desc": "這個舒適的撤退位於城市的中心。這是一個完美的地方，適合一對夫妻或單身者。最好的住宿地點。",
+=======
     "title": "中心城市舒適度假",
     "desc": "這個舒適的寄宿家庭位於城市的中心。這是一個完美的地方，適合一對夫妻或單身者居住。享受最美好的住宿地點。",
+>>>>>>> 0fb94a4f56c3ea1f7cf0a59a0a0747e66a5efd1c
     "location": "Central",
     "rating": "4",
     "price_per_month": "1450",
@@ -290,7 +295,11 @@
     "location": "South_Side",
     "rating": "1",
     "price_per_month": "400",
+<<<<<<< HEAD
+    "amenities": [],
+=======
     "amenities": ["WiFi"],
+>>>>>>> 0fb94a4f56c3ea1f7cf0a59a0a0747e66a5efd1c
     "vegetarian_friendly": true,
     "image_path": "/img/South_Vancouver_Sky_High_Condo.png"
   }
