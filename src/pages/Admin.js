@@ -37,7 +37,7 @@ const Admin = (props) =>{
 
       
         <div>
-             <Navbar loginUser={props.loginUser} logoutUser={props.logout}/>
+             <Navbar loginUser={props.loginUser} logoutUser={props.logout} countLike={props.countLike} />
              <Admincompo clientData={clientData}/>
             
         </div>

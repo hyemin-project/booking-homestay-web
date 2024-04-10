@@ -30,15 +30,19 @@ const Homestay = (props) => {
             if(language != 'en') {
                 console.log("here is homestay page this is language " + language)
                 jsonFileName = "homestay_" + language;
+                console.log("here is homestay page this is jsonFileName " + jsonFileName)
+                
             } 
             else{
                 jsonFileName = "homestay";
             }
 
         }
-
+        
         FileService.read(jsonFileName).then(
+          
             (response) => {
+                console.log("read file success" + jsonFileName)
                 setHomestay(response.data);
                 console.log(response.data);
             },

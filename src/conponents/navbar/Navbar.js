@@ -70,6 +70,11 @@ const Navbar = (props) => {
         console.log("language selected" + e.target)
     }
 
+    const handleFavorite = () => {
+        console.log("favorite clicked")
+        navigate('/fav');
+    }
+
     return (
         <div className="navbar">
             <div className="navContainer">
@@ -87,7 +92,7 @@ const Navbar = (props) => {
 
                     {/* implement favorite list logic here */}
                     <div className="favoriteList">
-                        <FontAwesomeIcon icon={faHeart} className="favoriteIcon" />
+                        <FontAwesomeIcon icon={faHeart} className="favoriteIcon"  onClick={handleFavorite} />
                         <span className="favoriteCount">{props.countLike}</span>
                     </div>
                     {/* implement multiple language logic here */}

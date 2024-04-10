@@ -16,11 +16,11 @@ export default class Favorite{
         return this.#favorites.has(hid);
     }
 
-
+    // add or remove homestay from favorite list
     toggleFavorite(homestay) {
         console.log("toggle favorite add " + homestay.hid);
         if (this.#favorites.has(homestay.hid)) {
-            
+
             this.#favorites.delete(homestay.hid);
             // console.log("favorite list delete " + homestay.hid);
             console.log("favorite list length " + this.#favorites.size)
@@ -31,6 +31,8 @@ export default class Favorite{
             // }
             
         }
+
+        this.saveFavoriteListToLocalStorage()
      
     }
 
@@ -38,7 +40,9 @@ export default class Favorite{
         return this.#favorites.size;
     }
 
-
+    isFavoriteEmpty(){
+        return this.#favorites.size === 0;
+    }
 
 
     getFavoritesList() {
@@ -46,7 +50,18 @@ export default class Favorite{
         return Array.from(this.#favorites.values());
     }
 
+    // save favorite list to local storage
+    saveFavoriteListToLocalStorage(){
+        const favoritesArray = Array.from(this.#favorites.values());
+        console.log("user id " + this.#uid + " save favorite list to local storage" + favoritesArray)
+        for (let hm of favoritesArray){
+            console.log("favorite list has " + hm.title);
+        }
+        localStorage.setItem(this.#uid, JSON.stringify(favoritesArray));
+``
+    }
 
+   
 
 }
 
