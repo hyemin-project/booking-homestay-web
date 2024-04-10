@@ -29,14 +29,14 @@
 }
 
 .siImg {
-    width:285px;
-    height:200px;
+    width:275px;
+    height:240px;
     object-fit:cover;
 }
 
 .homestayInfo-wrapper{
     width:562px;
-    height:192px;
+    height:240px;
    
     display: flex;
     justify-content: space-between;
@@ -53,6 +53,11 @@
 }
 .homestayDescription{
     width:380px;
+    height:72px;
+}
+
+.amenities{
+    margin-left:2px;
 }
 
 .homestayIncludeMsg{
@@ -66,6 +71,7 @@
     display:flex;
     flex-direction: column;
     justify-content: flex-end;
+   
 }
 
 .homestayPrice{
@@ -73,7 +79,11 @@
     justify-content: flex-end;
     font-size: 16px;
     font-weight: 600;
+   
 }
+
+
+
 
 /* like icon */
 .likeIcon {
@@ -88,30 +98,26 @@
     background-color: transparent;
     outline: none;
     transition: transform 0.2s ease, color 0.2s ease;
+    
 }
 
 .likeIcon:hover, .likeIcon:focus {
     transform: scale(1.2);
-    color: #E91E63; /* Adjust the color based on your preference */
+    color: #E91E63; 
 }
 
 .likeIcon:active {
     transform: scale(0.9);
 }
 
-.likeIcon i {
-    transition: color 0.2s;
-}
-
-
-.likeIcon.liked i {
-    /* color: #E91E63;  */
-    color: #ccc;
+.likeIcon.favorited {
+    color: #E91E63; 
     animation: pulse 1s;
 }
 
-.likeIcon.liked.clicked {
-    color: #E91E63; 
+.likeIcon.notFavorited {
+    color: gray; 
+    animation: pulse 1s;
 }
 
 @keyframes pulse {
@@ -151,3 +157,41 @@
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.12);
   }
   
+
+/* search result display */
+
+.searchResult h3 {
+    margin-bottom: 0.5rem; 
+    font-size: 1.6rem; 
+    font-weight:700;
+}
+
+.searchResult h4 {
+    margin-bottom: 0.5rem; 
+    font-size: 1.2rem; 
+    font-weight:700;
+}
+
+
+/* Styling specifically for the most valuable homestay message */
+.mostValuableHomestay {
+    color: #2F80ED; 
+    font-weight: bold;
+    background-color: rgba(0, 123, 255, 0.1); 
+    padding: 10px 15px; 
+    border-radius: 5px; 
+    display: inline-block; /* Only take up as much space as necessary */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* A subtle shadow for depth */
+    margin-top: 10px; 
+    transition: transform 0.2s; 
+}
+
+.mostValuableHomestay:hover {
+    transform: translateY(-2px); /* Slight lift effect on hover */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15); 
+}
+
+.mostValuableHomestayTitle{
+    color: #00695c; 
+    font-weight: 600; 
+}

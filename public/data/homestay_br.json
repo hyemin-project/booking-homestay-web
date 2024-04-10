@@ -1,7 +1,11 @@
 [
   {
     "id": "001",
+<<<<<<< HEAD
     "title": "Retiro Aconchegante no Centro da Cidade",
+=======
+    "title": "hotel no centro da cidade",
+>>>>>>> 0fb94a4f56c3ea1f7cf0a59a0a0747e66a5efd1c
     "desc": "Este retiro aconchegante está localizado no coração da cidade. É um lugar perfeito para um casal ou uma pessoa solteira. Melhor lugar para a sua estadia.",
     "location": "Central",
     "rating": "4",
@@ -13,7 +17,11 @@
   {
     "id": "002",
     "title": "Loft Moderno na Zona Oeste",
+<<<<<<< HEAD
     "desc": "Loft elegante com design contemporâneo, com academia e piscina. Perfeito para o viajante moderno em busca de uma localização conveniente na Zona Oeste.",
+=======
+    "desc": "Loft elegante com design moderno, academia e piscina. Perfeito para o viajante moderno que procura uma localização conveniente no West End.",
+>>>>>>> 0fb94a4f56c3ea1f7cf0a59a0a0747e66a5efd1c
     "location": "West_Side",
     "rating": "4",
     "price_per_month": "1350",
@@ -215,7 +223,11 @@
     "rating": "1",
     "location": "South_Side",
     "price_per_month": "400",
+<<<<<<< HEAD
     "amenities": [],
+=======
+    "amenities": ["WiFi"],
+>>>>>>> 0fb94a4f56c3ea1f7cf0a59a0a0747e66a5efd1c
     "vegetarian_friendly": true,
     "image_path": "/img/South_Vancouver_Sky_High_Condo.png"
   }

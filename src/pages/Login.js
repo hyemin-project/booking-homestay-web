@@ -1,10 +1,10 @@
-import {useState} from 'react';
+import {useState,useEffect} from 'react';
 import Navbar from '../conponents/navbar/Navbar';
 import { useNavigate } from "react-router-dom"; 
 
 
 const Login = (props) => {
-
+  
     const [user,setUser] = useState({email:"",pass:""});
     const navigate = useNavigate(); // use navigate hook
     // const handleLogin = (e) => {
@@ -12,17 +12,34 @@ const Login = (props) => {
     //     console.log("this is user email"+email,"this is user password"+password);
     // }
 
+    useEffect(() => {
+   
+      if(props.loginUser){
+        console.log("this is login page"+props.loginUser.pname)
+          if (props.loginUser.type === "admin") {
+              navigate("/admin");
+          } 
+          
+          if(props.loginUser.type === "client"){
+              navigate("/");
+          } 
+      }
+
+  }, [props.loginUser]);
+
     const changeHandler = (e)=>{
         setUser(prev=>{
             return {...prev,[e.target.name]:e.target.value}
         })
     }
 
+
+
     const handleSubmit = (e) => {
         e.preventDefault();
         props.auth(user);
-        navigate('/');
-        console.log("this is user email"+user.email,"this is user password"+user.pass);
+        console.log("loginUser is"+ props.loginUser);    
+        console.log("this is user email "+user.email,"this is user password "+user.pass);
     }
 
     // console.log("here is loging page");
@@ -30,7 +47,7 @@ const Login = (props) => {
     return (
 
         <>
-        <Navbar loginUser={props.loginUser}/>
+        <Navbar loginUser={props.loginUser} countLike={props.countLike}/>
         <section style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
         <div className="container" >
         <div className="card border-light-subtle shadow-sm" >

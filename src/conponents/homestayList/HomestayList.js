@@ -2,22 +2,32 @@ import "./homestayList.css";
 import Dropdown from 'react-bootstrap/Dropdown';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { HomestayObj } from "../../class/Favorite";
-import Pagination from './Pagination';
+import {useState,useEffect} from 'react';
+import { HomestayObj } from '../../class/favoriteList';
+
 
 const HomestayList = (props) => {
-    const navigate = useNavigate();
-    const [favoriteMark, setFavoriteMark] = useState(false);
+    
+    const [homestayCount, setHomestayCount] = useState(null);
+    
+    const [forceUpdate, setForceUpdate] = useState(false);
 
-    const [postsNum, setPostsNum] = useState(props.homestays);
 
-    const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage, setPostsPerPage] = useState(10);
 
-    const firstPostIndex = (currentPage - 1) * postsPerPage;
-    const lastPostIndex = firstPostIndex + postsPerPage;
+    useEffect(() => {
+        if (props.matchingHomestays) {
+            setHomestayCount(props.matchingHomestays.length);
+        }
+    }, [props.matchingHomestays]);
+
+    // useEffect(() => {
+    //     if( props.loginUser != null){
+    //         console.log("this is user id " + props.loginUser.id);
+            
+            
+    //     }     
+    // },[])
+    
 
     function convertRatingToStar(rating) {
         rating = Number(rating)
@@ -28,29 +38,42 @@ const HomestayList = (props) => {
         return star;
     }
 
-    const clickFavorite = (homestay, idx) => {
-        if (props.loginUser != null) {
-            //setFavoriteMark(!favoriteMark);
-            let homeObj = new HomestayObj(homestay.id, homestay.title, homestay.desc, homestay.location, homestay.rating, homestay.price_per_month, homestay.amenities, homestay.vegetarian_friendly, homestay.image_path);
-            props.favorite(homeObj);
-            const newArr = Array(postsNum.length).fill(false);
-            newArr[idx] = true;
-            setFavoriteMark(newArr);
+    function clickFavorite(homestay) {
+        if (props.loginUser == null) {
+            alert("Please login first!!");
         } else {
-            alert("Only login user can use the favorite list!");
-            navigate('/login');
+            let homeObj = new HomestayObj(homestay.id, homestay.title, homestay.desc, homestay.location, homestay.rating, homestay.price_per_month, homestay.amenities, homestay.vegetarian_friendly, homestay.image_path);
+            console.log("click like "+ homeObj.title)
+            props.favoriteListObj.toggleFavorite(homeObj);
+            console.log(homeObj.hid)
+            console.log("click like "+ props.favoriteListObj.isFavorite(homeObj.hid))
+            console.log("checked favorite" +props.favoriteListObj ? (props.favoriteListObj.isFavorite(homestay.id) ? 'favorited' : 'notFavorited') : 'notFavorited');
+            console.log("checked list size" + props.favoriteListObj.getFavoriteSize());
+            props.handleCountLike(props.favoriteListObj.isFavorite(homeObj.hid));
+            setForceUpdate(!forceUpdate); // Toggle the boolean to force re-render
+            
         }
     }
-
-
+  
     return (
         <>
             <div className="homestayList">
                 <div className="listResultTitle">
-
                     {/* search bar */}
                     <div className="searchResult">
-                        <h4>Vancouver: 20 search results found</h4>
+                        {props.loginUser == null ? (
+                            <h3>We've found {homestayCount} results for you!</h3>
+                        ) : (
+                            <>
+                                <h4>Hi {props.loginUser.fname}, we've found {homestayCount} results based on your preferences.</h4>
+                                {props.matchingHomestays.length > 0 && (
+                                     <h4 className="mostValuableHomestay">
+                                     <span className="mostValuableHomestayTitle">{props.matchingHomestays[0].title}</span> stands out as the perfect homestay for you!
+                                 </h4>
+                                 
+                                )}
+                            </>
+                        )}
                     </div>
 
                     {/* sorted button here */}
@@ -60,54 +83,59 @@ const HomestayList = (props) => {
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu>
-                            <Dropdown.Item >Sorted by price (high to low)</Dropdown.Item>
-                            <Dropdown.Item >Sorted by price (low to high)</Dropdown.Item>
-                            <Dropdown.Item >Sorted by rate&nbsp;  (high to low)</Dropdown.Item>
-                            <Dropdown.Item >Sorted by rate&nbsp; (low to high)</Dropdown.Item>
+                        {/* check if user is logged in, if yes, display recommended by score */}
+                        {props.loginUser && (
+                                <Dropdown.Item onClick={() => props.handleSort('recommended')}>
+                                    Recommended by Score
+                                </Dropdown.Item>
+                            )}
+                            <Dropdown.Item onClick={()=>props.handleSort('priceHigh')} >Sorted by price (high to low)</Dropdown.Item>
+                            <Dropdown.Item onClick={()=>props.handleSort('priceLow')}>Sorted by price (low to high)</Dropdown.Item>
+                            <Dropdown.Item onClick={()=>props.handleSort('rateHigh')}>Sorted by rate&nbsp;  (high to low)</Dropdown.Item>
+                            <Dropdown.Item onClick={()=>props.handleSort('rateLow')}>Sorted by rate&nbsp; (low to high)</Dropdown.Item>
+
                         </Dropdown.Menu>
                     </Dropdown>
+
                 </div>
 
                 <div className="homestayDisplay">
                     {/* check if props.homestays is not null, then map through the homestays array and display each homestay */}
-                    {props.homestays && props.homestays.map((homestay, idx) => {
+                    {props.matchingHomestays && props.matchingHomestays.map((homestay) => {
                         return (
                             //searchItem
                             <div className="homestayCard" key={homestay.id}>
-
-                                {/* implement add to like list logic here */}
-                                <div className={favoriteMark ? "likeIcon" :"likeIcon liked clicked" } onClick={() => clickFavorite(homestay, idx)}>
-                                    <FontAwesomeIcon icon={faHeart} />
-                                </div>
-
-                                <div className="siImg-wrapper">
-                                    <img src={homestay.image_path} alt="homestay" className="siImg" />
-                                </div>
-
-                                <div className="homestayInfo-wrapper">
-                                    <div className="homestayInfo">
-                                        <h5 className="homestayTitle">{homestay.title}</h5>
-                                        <h5 className="homestayRate"> {convertRatingToStar(homestay.rating)}<span className="homestayRatetext">&nbsp;{homestay.rating}</span></h5>
-                                        <p className="homestayDescription">{homestay.desc}</p>
-                                        <button className="seeAvailability">See Availability</button>
-                                    </div>
-
-                                    <div className="homestayDetails">
-                                        <h5 className="homestayPrice">$ {homestay.price_per_month}/month</h5>
-                                        <p className="homestayIncludeMsg">Include tax and fee</p>
-                                    </div>
-                                </div>
-
+                            {/* implement add to like list logic here */}
+                            <div className={`likeIcon ${props.favoriteListObj ? (props.favoriteListObj.isFavorite(homestay.id) ? 'favorited' : 'notFavorited') : 'notFavorited'}`} onClick={() => clickFavorite(homestay)}>
+                                <FontAwesomeIcon icon={faHeart} />
                             </div>
+
+                            <div className="siImg-wrapper">
+                                <img src={homestay.image_path} alt="homestay" className="siImg" />
+                            </div>
+
+                            <div className="homestayInfo-wrapper">
+                                <div className="homestayInfo">
+                                    <h5 className="homestayTitle">{homestay.title}</h5>
+                                    <h5 className="homestayRate">
+                                        {convertRatingToStar(homestay.rating)}
+                                        <span className="homestayRatetext">&nbsp;{homestay.rating}</span>
+                                    </h5>
+                                    <p className="homestayDescription">{homestay.desc}</p>
+                                    <p className="amenities">{homestay.amenities.join(", ")}</p>
+                                    <button className="seeAvailability">See Availability</button>
+                                </div>
+
+                                <div className="homestayDetails">
+                                    <h5 className="homestayPrice">$ {homestay.price_per_month}/month</h5>
+                                    <p className="homestayIncludeMsg">Include tax and fee</p>
+                                </div>
+                            </div>
+                        </div>
+
                         )
                     })}
 
-                    {/* <Pagination
-                        postsNum={postsNum.length}
-                        postsPerPage={postsPerPage}
-                        setCurrentPage={setCurrentPage}
-                        currentPage={currentPage}
-                    /> */}
                 </div>
             </div>
         </>
