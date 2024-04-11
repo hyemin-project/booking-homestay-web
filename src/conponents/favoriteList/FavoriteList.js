@@ -15,6 +15,7 @@ const FavoriteList = (props) => {
         //     navigate('/login');
         // }
         if (props.loginUser){
+        
             console.log("user is logged in" + props.loginUser.type) 
             props.loginUser.type!="client" && props.loginUser.type!="admin" ? navigate('/login') : console.log("user is client or admin")
         }
@@ -38,6 +39,7 @@ const FavoriteList = (props) => {
     }
 
     const backHome = () => {
+        props.setPending(true);
         navigate('/');
     }
 
@@ -50,7 +52,7 @@ const FavoriteList = (props) => {
     return (
         <>
             {/* pass login user and logout function to navbar */}
-            <Navbar loginUser={props.loginUser} logoutUser={props.logout} countLike={props.countLike} />
+            <Navbar loginUser={props.loginUser} logoutUser={props.logout} countLike={props.countLike} setPending={props.setPending} />
             <div className="listContainer">
                 <div className="listWrapper">
 

@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
-
 const Login = (props) => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -15,9 +14,10 @@ const Login = (props) => {
   //     e.preventDefault();
   //     console.log("this is user email"+email,"this is user password"+password);
   // }
+ 
 
   useEffect(() => {
-
+    
     if (props.loginUser) {
       console.log("this is login page" + props.loginUser.pname)
       if (props.loginUser.type === "admin") {
@@ -51,7 +51,7 @@ const Login = (props) => {
   return (
 
     <>
-      <Navbar loginUser={props.loginUser} countLike={props.countLike} />
+      <Navbar loginUser={props.loginUser} countLike={props.countLike} setPending={props.setPending}/>
       <section style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
         <div className="container" >
           <div className="card border-light-subtle shadow-sm" >

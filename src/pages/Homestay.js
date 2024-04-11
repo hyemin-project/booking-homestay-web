@@ -185,12 +185,37 @@ const Homestay = (props) => {
     };
 
 
+    // Function to handle search input
+    const handleSearch = (event) => {
+        // Convert the search value to lowercase
+        const searchValue = event.target.value.toLowerCase();
+
+        // Clone the homestays array for sorting
+        let sortedHomestays = [...homestays]; 
+    
+        // If the user is logged in, filter homestays based on user preferences
+        if (props.loginUser) {
+            sortedHomestays = matchingHomestays(homestays, props.loginUser);
+        }
+    
+        // Filter the homestays based on the search value, regardless of whether the user is logged in or not
+        sortedHomestays = sortedHomestays.filter(homestay => 
+            homestay.title.toLowerCase().includes(searchValue) || 
+            homestay.amenities.some(amenity => amenity.toLowerCase().includes(searchValue)) 
+        );
+    
+        setMatchedHomestays(sortedHomestays);
+    };
+    
+  
+
+
 
     return (
 
         <div>
             {/* pass login user and logout function to navbar */}
-            <Navbar loginUser={props.loginUser} logoutUser={props.logout} language={getLanguage} countLike={props.countLike}/>
+            <Navbar loginUser={props.loginUser} logoutUser={props.logout} language={getLanguage} countLike={props.countLike} setPending={props.setPending}/>
             <Header language={language} />
 
             <div className="listContainer">
@@ -201,7 +226,7 @@ const Homestay = (props) => {
                         <div className="searchBar">
                             <h5>{searchPlaceholder}</h5>
                             <div className="searchInput">
-                                <input type="text" placeholder="eg. Sky High Condo" />
+                                <input type="text" placeholder="eg. Sky High Condo" onChange={handleSearch} />
                                 <button type="button" className="searchButton">
                                     <FontAwesomeIcon icon={faMagnifyingGlass} />
                                 </button>
@@ -211,7 +236,7 @@ const Homestay = (props) => {
 
                     {/* display homestay list */}
                     <div className="listResult">
-                        <HomestayList matchingHomestays={matchedHomestays} loginUser={props.loginUser} favoriteListObj={props.favoriteListObj} handleSort={handleSort} handleCountLike={props.handleCountLike} />
+                        <HomestayList matchingHomestays={matchedHomestays} loginUser={props.loginUser} favoriteListObj={props.favoriteListObj} handleSort={handleSort} handleCountLike={props.handleCountLike}/>
                     </div>
                 </div>
             </div>

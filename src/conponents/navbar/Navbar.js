@@ -56,11 +56,14 @@ const Navbar = (props) => {
         
         if(props.loginUser && props.loginUser.type === 'admin') {
             if (location.pathname != '/admin') {
+                props.setPending(true);
                 navigate('/admin');
             } else {
+                props.setPending(true);
                 navigate('/');
             }
         }else{
+            props.setPending(true);
             navigate('/');
         }
     }
