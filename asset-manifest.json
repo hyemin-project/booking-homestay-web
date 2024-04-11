@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/booking-homestay-web/static/css/main.e551634d.css",
+    "main.js": "/booking-homestay-web/static/js/main.8fc73b0c.js",
+    "index.html": "/booking-homestay-web/index.html",
+    "main.e551634d.css.map": "/booking-homestay-web/static/css/main.e551634d.css.map",
+    "main.8fc73b0c.js.map": "/booking-homestay-web/static/js/main.8fc73b0c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e551634d.css",
+    "static/js/main.8fc73b0c.js"
+  ]
+}
