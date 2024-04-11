@@ -57,7 +57,7 @@ function App() {
       // console.log("decrypted user is "+ decryptedUser)
       if (decryptedUser) {
         let tmpUser = JSON.parse(decryptedUser);
-        console.log("decrypted user is "+ tmpUser)
+        // console.log("decrypted user is "+ tmpUser)
         setLoginUser(tmpUser);
 
         console.log("this is tmpuser " + tmpUser.id )
