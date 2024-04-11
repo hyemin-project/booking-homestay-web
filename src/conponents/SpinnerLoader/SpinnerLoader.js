@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import ScaleLoader from 'react-spinners/ScaleLoader';
-
+import PacmanLoader  from 'react-spinners/PacmanLoader';
+import {Hourglass} from 'react-loader-spinner'
 export default function SpLoader(props) {
    
     return (
@@ -12,7 +12,15 @@ export default function SpLoader(props) {
            
         }}>
             {props.pending ? (
-                <ScaleLoader color="#36d7b7"  height={100} width={15}/>
+               <Hourglass
+               visible={true}
+               height="80"
+               width="80"
+               ariaLabel="hourglass-loading"
+               wrapperStyle={{}}
+               wrapperClass=""
+               colors={['#306cce', '#72a1ed']}
+               />
             ) : (
                 'if you moment later...'
             )}

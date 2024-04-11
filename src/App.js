@@ -48,7 +48,7 @@ function App() {
     // pending animation for trick data loading
     setTimeout(() => {
       setPending(false);
-    }, 1600);
+    }, 2000);
 
     const encryptedUser = sessionStorage.getItem("loginUser");
     // console.log("encrypted user is "+ encryptedUser)
