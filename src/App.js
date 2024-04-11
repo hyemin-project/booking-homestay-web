@@ -27,12 +27,12 @@ function App() {
 
 
   // const [homestays, setHomestay] = useState(null);
-  useEffect(() => {
+  // useEffect(() => {
     
-    setTimeout(() => {
-      setPending(false);
-    }, 1800);
-  }, [pending]);
+  //   setTimeout(() => {
+  //     setPending(false);
+  //   }, 2500);
+  // }, [pending]);
 
   // read user data from json file
   useEffect(() => {
@@ -45,6 +45,10 @@ function App() {
         console.log(rej);
       }
     )
+    // pending animation for trick data loading
+    setTimeout(() => {
+      setPending(false);
+    }, 1600);
 
     const encryptedUser = sessionStorage.getItem("loginUser");
     // console.log("encrypted user is "+ encryptedUser)
@@ -100,7 +104,7 @@ function App() {
 
      
 
-    }, [])
+    }, [pending])
 
 
   useEffect(() => {

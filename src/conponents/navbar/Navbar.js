@@ -48,6 +48,7 @@ const Navbar = (props) => {
 
     // logout user the logout function is coming from App.js and it is passed as props to Homestay.js and then to Navbar.js
     const handleLogout = () => {
+    
         props.logoutUser();
         navigate('/')
     }
