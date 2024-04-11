@@ -122,7 +122,7 @@ const HomestayList = (props) => {
 
                 <div className="homestayDisplay">
                     {/* check if props.homestays is not null, then map through the homestays array and display each homestay */}
-                    {props.matchingHomestays && props.matchingHomestays.slice(start, end).map((homestay) => {
+                    {props.matchingHomestays && Array.isArray(props.matchingHomestays) && props.matchingHomestays.slice(start, end).map((homestay) => {
                         return (
                             //searchItem
                             <div className="homestayCard" key={homestay.id}>
