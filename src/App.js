@@ -9,21 +9,30 @@ import Admin from "./pages/Admin";
 import { AES, enc } from "crypto-js";
 import { client, admin } from "./class/user";
 import Favorite, { HomestayObj } from './class/favoriteList'
-
+import SpLoader from "./conponents/SpinnerLoader/SpinnerLoader";
 import FavoriteList from "./conponents/favoriteList/FavoriteList"
 
 
 
 
 function App() {
-
+  const [pending, setPending] = useState(true);
   const [countLike, setCountLike] = useState(0);
   const [users, setUsers] = useState(null);
   const [loginUser, setLoginUser] = useState(null);
   // user favorite list object -> initialize empty favorite list to avoid null pointer exception
   const [favoriteListObj, setFavoriteListObj] = useState(new Favorite(null));
 
+
+
+
   // const [homestays, setHomestay] = useState(null);
+  // useEffect(() => {
+    
+  //   setTimeout(() => {
+  //     setPending(false);
+  //   }, 2500);
+  // }, [pending]);
 
   // read user data from json file
   useEffect(() => {
@@ -36,6 +45,10 @@ function App() {
         console.log(rej);
       }
     )
+    // pending animation for trick data loading
+    setTimeout(() => {
+      setPending(false);
+    }, 2000);
 
     const encryptedUser = sessionStorage.getItem("loginUser");
     // console.log("encrypted user is "+ encryptedUser)
@@ -91,7 +104,7 @@ function App() {
 
      
 
-    }, [])
+    }, [pending])
 
 
   useEffect(() => {
@@ -184,6 +197,7 @@ function App() {
 
     if (tmpUser) {
       setLoginUser(tmpUser);
+      setPending(true);
       console.log("login success");
     }
     // if user is not found, alert user not found
@@ -202,6 +216,7 @@ function App() {
     setLoginUser(null);
     setFavoriteListObj(new Favorite(null));
     setCountLike(0);
+    setPending(true);
     sessionStorage.removeItem('loginUser');
   }
 
@@ -220,18 +235,24 @@ function App() {
 
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Link loginUser={loginUser} />}>
-          <Route index element={<Homestay loginUser={loginUser} logout={logoutUser} countLike={countLike} handleCountLike={handleCountLike} favoriteListObj={favoriteListObj} />} />
-          <Route path="login" element={<Login auth={Auth} loginUser={loginUser} countLike={countLike} />} />
-          <Route path="admin" element={<Admin loginUser={loginUser} logout={logoutUser} users={users} countLike={countLike} />} />
-          <Route path="fav" element={<FavoriteList loginUser={loginUser} logout={logoutUser} countLike={countLike} favorites={favoriteListObj} handleCountLike={handleCountLike}  />} />
-          {/* <Route path="logout" element={<Logout  />} />
-              <Route path="*" element={<NoPage />} /> */}
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <>
+      {pending ? (
+        <SpLoader pending={pending} setPending={setPending}/>
+      ) : (
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Link loginUser={loginUser} />}>
+              <Route index element={<Homestay loginUser={loginUser} logout={logoutUser} countLike={countLike} handleCountLike={handleCountLike} favoriteListObj={favoriteListObj} setPending={setPending}/>} />
+              <Route path="login" element={<Login auth={Auth} loginUser={loginUser} countLike={countLike} setPending={setPending}  pending={pending} />} />
+              <Route path="admin" element={<Admin loginUser={loginUser} logout={logoutUser} users={users} countLike={countLike} setPending={setPending} />} />
+              <Route path="fav" element={<FavoriteList loginUser={loginUser} logout={logoutUser} countLike={countLike} favorites={favoriteListObj} handleCountLike={handleCountLike} setPending={setPending} />} />
+              {/* <Route path="logout" element={<Logout  />} />
+                  <Route path="*" element={<NoPage />} /> */}
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      )}
+    </>
   );
 }
 

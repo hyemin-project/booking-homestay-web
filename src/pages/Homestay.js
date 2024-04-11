@@ -185,12 +185,20 @@ const Homestay = (props) => {
     };
 
 
+    // Function to handle search input
+    const handleSearch = (event) => {
+       
+    };
+    
+  
+
+
 
     return (
 
         <div>
             {/* pass login user and logout function to navbar */}
-            <Navbar loginUser={props.loginUser} logoutUser={props.logout} language={getLanguage} countLike={props.countLike}/>
+            <Navbar loginUser={props.loginUser} logoutUser={props.logout} language={getLanguage} countLike={props.countLike} setPending={props.setPending}/>
             <Header language={language} />
 
             <div className="listContainer">
@@ -201,7 +209,7 @@ const Homestay = (props) => {
                         <div className="searchBar">
                             <h5>{searchPlaceholder}</h5>
                             <div className="searchInput">
-                                <input type="text" placeholder="eg. Sky High Condo" />
+                                <input type="text" placeholder="eg. Sky High Condo" onChange={handleSearch} />
                                 <button type="button" className="searchButton">
                                     <FontAwesomeIcon icon={faMagnifyingGlass} />
                                 </button>
@@ -211,7 +219,7 @@ const Homestay = (props) => {
 
                     {/* display homestay list */}
                     <div className="listResult">
-                        <HomestayList matchingHomestays={matchedHomestays} loginUser={props.loginUser} favoriteListObj={props.favoriteListObj} handleSort={handleSort} handleCountLike={props.handleCountLike} />
+                        <HomestayList matchingHomestays={matchedHomestays} loginUser={props.loginUser} favoriteListObj={props.favoriteListObj} handleSort={handleSort} handleCountLike={props.handleCountLike}/>
                     </div>
                 </div>
             </div>

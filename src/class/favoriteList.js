@@ -5,7 +5,7 @@ export default class Favorite{
 
     constructor(uid){
         this.#uid = uid;
-        console.log("favorite list created for user id " + this.#uid);
+        // console.log("favorite list created for user id " + this.#uid);
     }
 
 
@@ -65,7 +65,7 @@ export default class Favorite{
 
 
     getFavoritesList() {
-        console.log("get favorite list" +Array.from(this.#favorites.values()));
+        // console.log("get favorite list" +Array.from(this.#favorites.values()));
         return Array.from(this.#favorites.values());
     }
 
@@ -158,7 +158,7 @@ export class HomestayObj{
         return this.#image_path;
     }
 
-     objsuccess(){
-        return "obj success created";
-     }
+    //  objsuccess(){
+    //     return "obj success created";
+    //  }
 }
