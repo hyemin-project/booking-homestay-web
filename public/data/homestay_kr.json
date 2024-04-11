@@ -215,11 +215,7 @@
       "rating": "1",
       "location": "South_Side",
       "price_per_month": "400",
-<<<<<<< HEAD
-      "amenities": [],
-=======
       "amenities": ["WiFi"],
->>>>>>> 0fb94a4f56c3ea1f7cf0a59a0a0747e66a5efd1c
       "vegetarian_friendly": true,
       "image_path": "/img/South_Vancouver_Sky_High_Condo.png"
     }
