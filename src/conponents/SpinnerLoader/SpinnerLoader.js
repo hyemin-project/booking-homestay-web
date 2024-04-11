@@ -1,5 +1,3 @@
-import React, { useState, useEffect } from 'react';
-import PacmanLoader  from 'react-spinners/PacmanLoader';
 import {Hourglass} from 'react-loader-spinner'
 export default function SpLoader(props) {
    
