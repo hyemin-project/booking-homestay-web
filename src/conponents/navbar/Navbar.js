@@ -29,6 +29,7 @@ const Navbar = (props) => {
 
     useEffect(() => {
         const handleClickOutside = (event) => {
+            //The .current property accesses the current reference value, which in this context is the actual DOM 
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
                 setShowDropdown(false);
             }

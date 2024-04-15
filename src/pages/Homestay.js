@@ -187,7 +187,25 @@ const Homestay = (props) => {
 
     // Function to handle search input
     const handleSearch = (event) => {
-       
+        const searchValue = event.target.value.toLowerCase();
+
+        // Clone the homestays array for sorting
+        let sortedHomestays = [...homestays]; 
+    
+        // If the user is logged in, filter homestays based on user preferences
+        if (props.loginUser) {
+            sortedHomestays = matchingHomestays(homestays, props.loginUser);
+        }
+    
+        // Filter the homestays based on the search value, regardless of whether the user is logged in or not
+        sortedHomestays = sortedHomestays.filter(homestay => 
+            homestay.title.toLowerCase().includes(searchValue) || 
+            homestay.amenities.some(amenity => amenity.toLowerCase().includes(searchValue)) 
+        );
+    
+        setMatchedHomestays(sortedHomestays);
+
+
     };
     
   
